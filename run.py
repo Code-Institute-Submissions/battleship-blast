@@ -1,4 +1,5 @@
 from termcolor import colored
+from pyfiglet import Figlet
 
 import random
 
@@ -8,6 +9,10 @@ def launch_intro():
     and requests players name
     """
     print(colored("WELCOME TO BATTLESHIPS BLAST \n",'green'))
+    global player_name
+    player_name = input(colored("Enter player name  \n",'green'))
+    
+
 
 
 def generate_random_coordinates():
@@ -16,6 +21,7 @@ def generate_random_coordinates():
     coordinates where battleships will
     be hidden on the board.
     """
+    global random_coordinates
     random_coordinates = []
     while len(random_coordinates) < 5:
         x = random.randint(0,4)
@@ -24,7 +30,10 @@ def generate_random_coordinates():
         if coordinate not in random_coordinates:
             random_coordinates.append(tuple(coordinate))
     return random_coordinates
-    
+
+
+
 
 launch_intro()
 generate_random_coordinates()
+print(random_coordinates)
