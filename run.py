@@ -13,6 +13,6 @@ def generate_random_coordinates():
         coordinate = x,y
         if coordinate not in random_coordinates:
             random_coordinates.append(tuple(coordinate))
-    print(random_coordinates)
+    return random_coordinates
     
 generate_random_coordinates()()
