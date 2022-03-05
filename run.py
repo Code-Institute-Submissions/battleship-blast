@@ -63,22 +63,30 @@ def game_instructions():
     """
     Game instructions
     """
-    print(colored('************************************************ \n','green'))
-    print(colored("G A M E    I N S T R U C T I O N S \n",'green'))
-    print("\n")
-    print(colored("• The battlefield is displayed in a 5 x 5 grid.",'green'))
-    print(colored("• In this field there are 5 battleships hidden.",'green'))
-    print(colored("• Each battleship takes up one single coordinate. For example: (0, 1) \n",'green'))
-    print(colored("• Enter the coordinates to launch the missil. \n",'green'))
-    print(colored("• You have a total of 15 missils.",'green'))
-    print(colored("• You must sink ALL battleships to defeat the enemy. \n",'green'))
-    print(colored("• The top left corner is coordinate. (0, 0)",'green'))
-    print(colored("• The bottom right corner is coordinates.\n (4, 4)",'green'))
-    print("\n")
-    print(colored("Go back to menu--> M",'green'))
-    menu_selection= input().upper() 
-    validate_key(menu_selection)
-    menu_key_options(menu_selection)  
+    while True:
+        print(colored('************************************************ \n','green'))
+        print(colored("G A M E    I N S T R U C T I O N S \n",'green'))
+        print("\n")
+        print(colored("• The battlefield is displayed in a 5 x 5 grid.",'green'))
+        print(colored("• In this field there are 5 battleships hidden.",'green'))
+        print(colored("• Each battleship takes up one single coordinate. For example: (0, 1) \n",'green'))
+        print(colored("• Enter the coordinates to launch the missil. \n",'green'))
+        print(colored("• You have a total of 15 missils.",'green'))
+        print(colored("• You must sink ALL battleships to defeat the enemy. \n",'green'))
+        print(colored("• The top left corner is coordinate. (0, 0)",'green'))
+        print(colored("• The bottom right corner is coordinates.\n (4, 4)",'green'))
+        print("\n")
+        print(colored("Go back to menu--> M",'green'))
+        menu_selection= input().upper() 
+        menu_key_options(menu_selection)  
+        
+        global keys_m
+        keys_m = "M"
+        if validate_key(menu_selection, keys_m):
+            print('Data is valid!')
+            break
+
+          
 
 def launch_game():
     """
