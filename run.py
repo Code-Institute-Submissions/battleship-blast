@@ -1,12 +1,15 @@
+# IMPORTS ---------------------------------------
+
 import random
 
 from pyfiglet import Figlet
 from termcolor import colored
 
-# GLOBAL VARIABLES
+# GLOBAL VARIABLES ------------------------------
 keys_123="1 2 3"
 keys_m = "M"
 
+# GAME INTRO, MENU AND INSTRUCTION FUNCTIONS--------------------------
 
 def launch_intro():
     """
@@ -16,7 +19,7 @@ def launch_intro():
     print(colored('************************************************ \n','green'))
     print(colored("B A T T L E S H I P   B L A S T \n",'green'))
     global player_name
-    player_name = input(colored("Enter player name  \n",'green'))
+    player_name = input(colored("Enter player name: \n",'green'))
 
 def game_menu():
     """
@@ -38,7 +41,6 @@ def game_menu():
         menu_key_options(menu_selection)
 
         if validate_key(menu_selection, keys_123):
-            print('Data is valid')
             break
 
 def validate_key(data, valid_keys):
@@ -84,22 +86,8 @@ def game_instructions():
         menu_key_options(menu_selection)  
         
         if validate_key(menu_selection, keys_m):
-            print('Data is valid!')
             break
 
-          
-
-def launch_game():
-    """
-    Start Game
-    """
-    print('Start Game')
-
-def exit_game():
-    """
-    Exit Game
-    """
-    print('Exit Game')
 
 def menu_key_options(key_selection):
     """
@@ -114,6 +102,22 @@ def menu_key_options(key_selection):
         exit_game()
     elif key_selection == "M":
         game_menu()
+    
+def exit_game():
+    """
+    Exit Game
+    """
+    print('Exit Game')
+
+
+# GAME ROUND FUNCTIONS--------------------------
+
+
+def launch_game():
+    """
+    Start Game
+    """
+    print('Start Game')
 
 def generate_random_coordinates():
     """
