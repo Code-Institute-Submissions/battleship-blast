@@ -19,18 +19,23 @@ def game_menu():
     Instruction page, launch game or
     exit game.
     """
-    print(colored('************************************************ \n','green'))
-    print(colored("G A M E    M E N U \n",'green'))
-    print("\n")
-    print(colored("War is imminent....",'green'))
-    print(colored(f'{player_name}, prepare for battle! \n','green'))
-    print(colored("Game Instructions--> 1",'green'))
-    print(colored("Launch game--> 2",'green'))
-    print(colored("Exit game--> 3",'green'))
-    global menu_selection
-    menu_selection=input()
-    menu_key_options(menu_selection)
-    validate_key(menu_selection)
+    while True:
+        print(colored('************************************************ \n','green'))
+        print(colored("G A M E    M E N U \n",'green'))
+        print("\n")
+        print(colored("War is imminent....",'green'))
+        print(colored(f'{player_name}, prepare for battle! \n','green'))
+        print(colored("Game Instructions--> 1",'green'))
+        print(colored("Launch game--> 2",'green'))
+        print(colored("Exit game--> 3",'green'))
+        global menu_selection
+        menu_selection=input()
+        menu_key_options(menu_selection)
+        #validate_key(menu_selection)
+
+        if validate_key(menu_selection):
+            print('Data is valid')
+            break
 
 def validate_key(data):
     """
@@ -50,6 +55,8 @@ def validate_key(data):
        
     except ValueError as e:
         print(f"Invalid data: {e}")
+        return False
+    return True
 
 
 def game_instructions():
