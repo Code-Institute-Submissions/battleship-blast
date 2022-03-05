@@ -30,27 +30,27 @@ def game_menu():
         print(colored("Exit game--> 3",'green'))
         global menu_selection
         menu_selection=input()
+        global keys_123
+        keys_123="1 2 3"
         menu_key_options(menu_selection)
-        #validate_key(menu_selection)
 
-        if validate_key(menu_selection):
+        if validate_key(menu_selection, keys_123):
             print('Data is valid')
             break
 
-def validate_key(data):
+def validate_key(data, valid_keys):
     """
     Function that validates input data and raises errors accordingly.
     Correct data should be either 1, 2 or 3
     """
     try:
-        keys="1 2 3"
         if len(data)!= 1:
             raise ValueError(
                 f'String length--> {len(data)}. Type one value only.'
             )
-        elif data not in keys:
+        elif data not in valid_keys:
             raise ValueError(
-                f"Input--> {data} Only 1, 2 or 3 are valid inputs."
+                f"Input--> {data} Only {valid_keys} are valid inputs."
             )
        
     except ValueError as e:
