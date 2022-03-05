@@ -21,14 +21,49 @@ def game_menu():
     """
     print(colored('************************************************ \n','green'))
     print(colored("G A M E    M E N U \n",'green'))
-    print(colored(f'{player_name} are you ready for war? \n','green'))
+    print(colored("War is imminent....",'green'))
+    print(colored(f'{player_name}, prepare for battle! \n','green'))
     print(colored("Game Instructions--> 1",'green'))
     print(colored("Launch game--> 2",'green'))
     print(colored("Exit game--> 3",'green'))
-    menu_selection=input()
+    global menu_selection
+    menu_selection=int(input())
+
+
+def game_instructions():
+    """
+    Game instructions
+    """
+    print('Game instructions')
+
+def launch_game():
+    """
+    Start Game
+    """
+    print('Start Game')
+
+def exit_game():
+    """
+    Exit Game
+    """
+    print('Exit Game')
+
+
+def menu_key_options(key_selection):
+    """
+    Function that directs the user to their chosen 
+    option
+    """
+    if key_selection == 1:
+        game_instructions()
+    elif key_selection == 2:
+        launch_game()
+    elif key_selection == 3:
+        exit_game()
+    else: 
+        print('Invalid entry')
+    
    
-
-
 
 
 def generate_random_coordinates():
@@ -52,5 +87,6 @@ def generate_random_coordinates():
 
 launch_intro()
 game_menu()
+menu_key_options(menu_selection)
 generate_random_coordinates()
 print(random_coordinates)
