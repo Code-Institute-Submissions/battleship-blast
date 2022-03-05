@@ -39,10 +39,15 @@ def validate_key(data):
     """
     try:
         keys="1 2 3"
-        if data not in keys:
+        if len(data)!= 1:
             raise ValueError(
-                f"Only input 1, 2, 3 are valid. You provided invalid data {data}."
+                f'String length--> {len(data)}. Type one value only.'
             )
+        elif data not in keys:
+            raise ValueError(
+                f"Input--> {data} Only 1, 2 or 3 are valid inputs."
+            )
+       
     except ValueError as e:
         print(f"Invalid data: {e}")
 
