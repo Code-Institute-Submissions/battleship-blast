@@ -3,6 +3,11 @@ import random
 from pyfiglet import Figlet
 from termcolor import colored
 
+# GLOBAL VARIABLES
+keys_123="1 2 3"
+keys_m = "M"
+
+
 def launch_intro():
     """
     Initial function that loads Intro 
@@ -30,8 +35,6 @@ def game_menu():
         print(colored("Exit game--> 3",'green'))
         global menu_selection
         menu_selection=input()
-        global keys_123
-        keys_123="1 2 3"
         menu_key_options(menu_selection)
 
         if validate_key(menu_selection, keys_123):
@@ -80,8 +83,6 @@ def game_instructions():
         menu_selection= input().upper() 
         menu_key_options(menu_selection)  
         
-        global keys_m
-        keys_m = "M"
         if validate_key(menu_selection, keys_m):
             print('Data is valid!')
             break
