@@ -48,6 +48,76 @@ def game_menu():
 
         if validate_key(menu_selection, keys_123):
             break
+
+def menu_key_options(key_selection):
+    """
+    Function that directs the user to their chosen 
+    option
+    """
+    if key_selection == "1":
+        game_instructions()
+    elif key_selection == "2":
+        launch_game()
+    elif key_selection == "3":
+        exit_game()
+    elif key_selection == "M":
+        game_menu()
+    elif key_selection == "Y":
+        game_over() 
+
+def game_instructions():
+    """
+    Game instructions
+    """
+    while True:
+        print(colored('************************************************ \n','green'))
+        print(colored("G A M E    I N S T R U C T I O N S \n",'green'))
+        print("\n")
+        print(colored("• The battlefield is displayed in a 5 x 5 grid.",'green'))
+        print(colored("• In this field there are 5 battleships hidden.",'green'))
+        print(colored("• Each battleship takes up one single coordinate. For example: (0, 1) \n",'green'))
+        print(colored("• Enter the coordinates to launch the missil. \n",'green'))
+        print(colored("• You have a total of 15 missils.",'green'))
+        print(colored("• You must sink ALL battleships to defeat the enemy. \n",'green'))
+        print(colored("• The top left corner is coordinate. (0, 0)",'green'))
+        print(colored("• The bottom right corner is coordinates.\n (4, 4)",'green'))
+        print("\n")
+        print(colored("Go back to menu--> M",'green'))
+        menu_selection= input().upper() 
+        menu_key_options(menu_selection)  
+        
+        if validate_key(menu_selection, keys_m):
+            break
+  
+def exit_game():
+    """
+    Exit Game
+    """
+    while True:
+        print(colored('************************************************ \n','green'))
+        print(colored("Q U I T   G A M E \n",'green'))
+        print("\n")
+        print(colored("The enemy is so close... \n",'green'))
+        print(colored("Will you admit defeat and quit now? \n",'green'))
+        print(colored("Quit game--> Y",'green'))
+        print(colored("Go back to menu--> M",'green'))
+
+        menu_selection= input().upper() 
+        menu_key_options(menu_selection)  
+        
+        if validate_key(menu_selection, keys_exit):
+            break
+   
+def game_over():
+    """
+    Function that triggers display of GAME OVER page
+    """
+    print(colored('************************************************ \n','green'))
+
+    print(colored("G A M E    O V E R",'green'))
+
+
+
 # VALIDATING FUNCTIONS--------------------------
 
 def validate_key(data, valid_keys):
@@ -84,75 +154,6 @@ def validate_player_name(data):
         return False
     return True
 
-def game_instructions():
-    """
-    Game instructions
-    """
-    while True:
-        print(colored('************************************************ \n','green'))
-        print(colored("G A M E    I N S T R U C T I O N S \n",'green'))
-        print("\n")
-        print(colored("• The battlefield is displayed in a 5 x 5 grid.",'green'))
-        print(colored("• In this field there are 5 battleships hidden.",'green'))
-        print(colored("• Each battleship takes up one single coordinate. For example: (0, 1) \n",'green'))
-        print(colored("• Enter the coordinates to launch the missil. \n",'green'))
-        print(colored("• You have a total of 15 missils.",'green'))
-        print(colored("• You must sink ALL battleships to defeat the enemy. \n",'green'))
-        print(colored("• The top left corner is coordinate. (0, 0)",'green'))
-        print(colored("• The bottom right corner is coordinates.\n (4, 4)",'green'))
-        print("\n")
-        print(colored("Go back to menu--> M",'green'))
-        menu_selection= input().upper() 
-        menu_key_options(menu_selection)  
-        
-        if validate_key(menu_selection, keys_m):
-            break
-
-
-def menu_key_options(key_selection):
-    """
-    Function that directs the user to their chosen 
-    option
-    """
-    if key_selection == "1":
-        game_instructions()
-    elif key_selection == "2":
-        launch_game()
-    elif key_selection == "3":
-        exit_game()
-    elif key_selection == "M":
-        game_menu()
-    elif key_selection == "Y":
-        game_over()
-    
-def exit_game():
-    """
-    Exit Game
-    """
-    while True:
-        print(colored('************************************************ \n','green'))
-        print(colored("Q U I T   G A M E \n",'green'))
-        print("\n")
-        print(colored("The enemy is so close... \n",'green'))
-        print(colored("Will you admit defeat and quit now? \n",'green'))
-        print(colored("Quit game--> Y",'green'))
-        print(colored("Go back to menu--> M",'green'))
-
-        menu_selection= input().upper() 
-        menu_key_options(menu_selection)  
-        
-        if validate_key(menu_selection, keys_exit):
-            break
-   
-def game_over():
-    """
-    Function that triggers display of GAME OVER page
-    """
-    print(colored('************************************************ \n','green'))
-
-    print(colored("G A M E    O V E R",'green'))
-
-
 
 # GAME ROUND FUNCTIONS--------------------------
 
@@ -161,7 +162,37 @@ def launch_game():
     """
     Start Game
     """
-    print('Start Game')
+    print(colored('************************************************ \n','green'))
+    print(colored("T H E    B A T T L E F I E L D \n",'green'))
+    print("\n")
+    grid(board)
+    print("\n")
+    row_choice = input(colored("Enter row coordinate: \n",'green'))
+    column_choice = input(colored("Enter column coordinate: \n",'green'))
+
+
+
+
+# CREATE BOARD FUNCTION--------------------------
+
+board=[]
+for x in range(5):
+    board.append([" . "]*5)
+
+
+def grid(board):
+    """ 
+    Function that prints board onto the terminal
+    """
+    print("    A   B   C   D   E")
+    print("  _____________________")
+    row_letter=0
+    for row in board:
+        print((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"))
+        row_letter+=1
+    print("  _____________________")
+    
+
 
 def generate_random_coordinates():
     """
