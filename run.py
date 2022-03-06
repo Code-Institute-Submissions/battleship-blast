@@ -6,8 +6,9 @@ from pyfiglet import Figlet
 from termcolor import colored
 
 # GLOBAL VARIABLES ------------------------------
-keys_123="1 2 3"
+keys_123 = "1 2 3"
 keys_m = "M"
+keys_exit = "Y M"
 
 # GAME INTRO, MENU AND INSTRUCTION FUNCTIONS--------------------------
 
@@ -16,10 +17,15 @@ def launch_intro():
     Initial function that loads Intro 
     and requests players name
     """
-    print(colored('************************************************ \n','green'))
-    print(colored("B A T T L E S H I P   B L A S T \n",'green'))
-    global player_name
-    player_name = input(colored("Enter player name: \n",'green'))
+    while True:
+        print(colored('************************************************ \n','green'))
+        print(colored("B A T T L E S H I P   B L A S T \n",'green'))
+        global player_name
+        player_name = input(colored("Enter player name: \n",'green'))
+
+        if validate_player_name(player_name):
+            break
+
 
 def game_menu():
     """
@@ -42,6 +48,7 @@ def game_menu():
 
         if validate_key(menu_selection, keys_123):
             break
+# VALIDATING FUNCTIONS--------------------------
 
 def validate_key(data, valid_keys):
     """
@@ -63,6 +70,19 @@ def validate_key(data, valid_keys):
         return False
     return True
 
+def validate_player_name(data):
+    """
+    Function validating player name
+    """
+    try:
+        if (data.isalpha()) == False:
+            raise ValueError(
+                f'You entered {data} which is not an alphabetical string,'
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}")
+        return False
+    return True
 
 def game_instructions():
     """
@@ -102,12 +122,36 @@ def menu_key_options(key_selection):
         exit_game()
     elif key_selection == "M":
         game_menu()
+    elif key_selection == "Y":
+        game_over()
     
 def exit_game():
     """
     Exit Game
     """
-    print('Exit Game')
+    while True:
+        print(colored('************************************************ \n','green'))
+        print(colored("Q U I T   G A M E \n",'green'))
+        print("\n")
+        print(colored("The enemy is so close... \n",'green'))
+        print(colored("Will you admit defeat and quit now? \n",'green'))
+        print(colored("Quit game--> Y",'green'))
+        print(colored("Go back to menu--> M",'green'))
+
+        menu_selection= input().upper() 
+        menu_key_options(menu_selection)  
+        
+        if validate_key(menu_selection, keys_exit):
+            break
+   
+def game_over():
+    """
+    Function that triggers display of GAME OVER page
+    """
+    print(colored('************************************************ \n','green'))
+
+    print(colored("G A M E    O V E R",'green'))
+
 
 
 # GAME ROUND FUNCTIONS--------------------------
