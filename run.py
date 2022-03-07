@@ -157,24 +157,6 @@ def validate_player_name(data):
 
 # GAME ROUND FUNCTIONS--------------------------
 
-
-def launch_game():
-    """
-    Start Game
-    """
-    print(colored('************************************************ \n','green'))
-    print(colored("T H E    B A T T L E F I E L D \n",'green'))
-    print("\n")
-    grid(board)
-    print("\n")
-    row_choice = input(colored("Enter row coordinate: \n",'green'))
-    column_choice = input(colored("Enter column coordinate: \n",'green'))
-
-
-
-
-# CREATE BOARD FUNCTION--------------------------
-
 board=[]
 for x in range(5):
     board.append([" . "]*5)
@@ -191,24 +173,47 @@ def grid(board):
         print((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"))
         row_letter+=1
     print("  _____________________")
+    place_random_ships()
     
-
-
-def generate_random_coordinates():
+def place_random_ships():
     """
     Function that generated 5 random unique 
     coordinates where battleships will
     be hidden on the board.
     """
-    global random_coordinates
-    random_coordinates = []
-    while len(random_coordinates) < 5:
-        x = random.randint(0,4)
-        y = random.randint(0,4)
-        coordinate = x,y
-        if coordinate not in random_coordinates:
-            random_coordinates.append(tuple(coordinate))
-    return random_coordinates
+    global enemy_ship_coordinates
+    enemy_ship_coordinates = []
+    while len(enemy_ship_coordinates) < 5:
+        ship_row = random.randint(0,4)
+        ship_column = random.randint(0,4)
+        coordinate = ship_row, ship_column
+        if coordinate not in enemy_ship_coordinates:
+            enemy_ship_coordinates.append(tuple(coordinate))
+    print(enemy_ship_coordinates)
+
+def launch_game():
+    """
+    Start Game
+    """
+    print(colored('************************************************ \n','green'))
+    print(colored("T H E    B A T T L E F I E L D \n",'green'))
+    print("\n")
+    grid(board)
+    print("\n")
+    global row_choice
+    global column_choice
+    row_choice = int(input(colored("Enter row coordinate: \n",'green')))
+    column_choice = int(input(colored("Enter column coordinate: \n",'green')))
+    global player_guess
+    player_guess= row_choice, column_choice
+    print(player_guess)
+    compare_coordinates()
+
+def compare_coordinates():
+    if player_guess in enemy_ship_coordinates:
+        print("You hit a ship!")
+    elif player_guess not in enemy_ship_coordinates:
+        print("You missed!")
 
 launch_intro()
 game_menu()
