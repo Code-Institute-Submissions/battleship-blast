@@ -173,7 +173,6 @@ def grid(board):
         print((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"))
         row_letter+=1
     print("  _____________________")
-    place_random_ships()
     
 def place_random_ships():
     """
@@ -202,31 +201,45 @@ def launch_game():
     print("\n")
     global row_choice
     global column_choice
-    row_choice = int(input(colored("Enter row coordinate: \n",'green')))
-    column_choice = int(input(colored("Enter column coordinate: \n",'green')))
-    global player_guess
-    player_guess= row_choice, column_choice
-    print(player_guess)
-    compare_coordinates(board)
+    missils=0
+    place_random_ships()
+    while missils<=15:
+        row_choice = int(input(colored("Enter row coordinate: \n",'green')))
+        column_choice = int(input(colored("Enter column coordinate: \n",'green')))
+        global player_guess
+        player_guess= row_choice, column_choice
+        print(player_guess)
+        missils+=1
+        print(missils)
+        compare_coordinates(board)
 
 def compare_coordinates(board):
+    """
+    Function that compares player guess and randomly generated 
+    coordinates to determine wether ship is hit or missed, 
+    prints a message on the screen, and prints an X (hit) or a - (miss)
+    on the grid.
+    """
     print(colored('************************************************ \n','green'))
     print("\n")
+    hits=0
+
     if player_guess in enemy_ship_coordinates:
         board[row_choice][column_choice]=" X "
         grid(board)
         print("\n")
         print(colored("You sunk a ship! \n",'green'))
+        hits+=1
+        print(hits)
 
     elif player_guess not in enemy_ship_coordinates:
         board[row_choice][column_choice]=" - "
         grid(board)
         print("\n")
         print("You missed!")
+        
 
 
 launch_intro()
 game_menu()
 
-#generate_random_coordinates()
-#print(random_coordinates)
