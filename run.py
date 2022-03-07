@@ -207,13 +207,23 @@ def launch_game():
     global player_guess
     player_guess= row_choice, column_choice
     print(player_guess)
-    compare_coordinates()
+    compare_coordinates(board)
 
-def compare_coordinates():
+def compare_coordinates(board):
+    print(colored('************************************************ \n','green'))
+    print("\n")
     if player_guess in enemy_ship_coordinates:
-        print("You hit a ship!")
+        board[row_choice][column_choice]=" X "
+        grid(board)
+        print("\n")
+        print(colored("You sunk a ship! \n",'green'))
+
     elif player_guess not in enemy_ship_coordinates:
+        board[row_choice][column_choice]=" - "
+        grid(board)
+        print("\n")
         print("You missed!")
+
 
 launch_intro()
 game_menu()
