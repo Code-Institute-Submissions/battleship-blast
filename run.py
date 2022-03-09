@@ -1,22 +1,17 @@
 # IMPORTS ---------------------------------------
-
 import random
-
-from pyfiglet import Figlet
 from termcolor import colored
 
 # GLOBAL VARIABLES ------------------------------
 keys_123 = "1 2 3"
 keys_m = "M"
 keys_exit = "Y M"
-keys_player_guess = "A B C D E"
+keys_player_guess_row = "A B C D E"
+keys_player_guess_column = "1 2 3 4 5"
 
 letters_to_numbers = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4}
 
-
-
 # GAME INTRO, MENU AND INSTRUCTION FUNCTIONS--------------------------
-
 def launch_intro():
     """
     Initial function that loads Intro 
@@ -30,7 +25,6 @@ def launch_intro():
 
         if validate_player_name(player_name):
             break
-
 
 def game_menu():
     """
@@ -50,7 +44,6 @@ def game_menu():
         global menu_selection
         menu_selection=input('\n')
         menu_key_options(menu_selection)
-
         if validate_key(menu_selection, keys_123):
             break
 
@@ -89,11 +82,10 @@ def game_instructions():
         print("\n")
         print(colored("Go back to menu--> M",'green'))
         menu_selection= input('\n').upper() 
-        menu_key_options(menu_selection)  
-        
+        menu_key_options(menu_selection)    
         if validate_key(menu_selection, keys_m):
-            break
-  
+            break 
+
 def exit_game():
     """
     Exit Game
@@ -106,13 +98,11 @@ def exit_game():
         print(colored("Will you admit defeat and quit now? \n",'green'))
         print(colored("Quit game--> Y",'green'))
         print(colored("Go back to menu--> M",'green'))
-
         menu_selection= input('\n').upper() 
         menu_key_options(menu_selection)  
-        
         if validate_key(menu_selection, keys_exit):
-            break
-   
+            break  
+
 def game_over():
     """
     Function that triggers display of GAME OVER page
@@ -122,24 +112,22 @@ def game_over():
     print(colored("G A M E    O V E R",'green'))
 
 # GAME ROUND FUNCTIONS--------------------------
-
 board=[]
 for x in range(5):
     board.append([" . "]*5)
-
 
 def grid(board):
     """ 
     Function that prints board onto the terminal
     """
-    print("    A   B   C   D   E")
+    print("    1   2   3   4   5")
     print("  _____________________")
     row_letter=0
     for row in board:
         print((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"))
         row_letter+=1
-    print("  _____________________")
-    
+    print("  _____________________") 
+
 def place_random_ships():
     """
     Function that generated 5 random unique 
@@ -154,7 +142,6 @@ def place_random_ships():
         coordinate = ship_row, ship_column
         if coordinate not in enemy_ship_coordinates:
             enemy_ship_coordinates.append(tuple(coordinate))
-    #print(enemy_ship_coordinates)
 
 def launch_game():
     """
@@ -168,34 +155,27 @@ def launch_game():
     global row_choice
     global column_choice
     global row_choice_letter
-    global column_choice_letter
-    missils=1
+    global column_choice_number
+    misiles=1
     place_random_ships()
-    while missils<=15:
+    while misiles<=3:
         while True:
             row_choice_letter = input(colored("Enter row coordinate: \n",'green')).upper()
-            validate_key(row_choice_letter, keys_player_guess)
-            if validate_key(row_choice_letter, keys_player_guess):
+            validate_key(row_choice_letter, keys_player_guess_row)
+            if validate_key(row_choice_letter, keys_player_guess_row):
                 break
         while True:        
-            column_choice_letter = input(colored("Enter column coordinate: \n",'green')).upper()
-            validate_key(column_choice_letter, keys_player_guess)
-            if validate_key(column_choice_letter, keys_player_guess):
-                break
-            
-            
-            
+            column_choice_number = input(colored("Enter column coordinate: \n",'green')).upper()
+            validate_key(column_choice_number, keys_player_guess_column)
+            if validate_key(column_choice_number, keys_player_guess_column):
+                break          
         row_choice = letters_to_numbers[row_choice_letter]
-        column_choice = letters_to_numbers[column_choice_letter]
-                
+        column_choice = int(column_choice_number) - 1        
         global player_guess
         player_guess= row_choice, column_choice
-        print(colored(f'You guessed {player_guess} \n','green'))
-        missils+=1
-        #print(missils)
+        print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n','green'))
+        misiles+=1
         compare_coordinates(board)
-            
-            
 
 def compare_coordinates(board):
     """
@@ -207,7 +187,6 @@ def compare_coordinates(board):
     print(colored('************************************************ \n','green'))
     print("\n")
     hits=0
-
     if player_guess in enemy_ship_coordinates:
         board[row_choice][column_choice]=" X "
         grid(board)
@@ -221,9 +200,7 @@ def compare_coordinates(board):
         grid(board)
         print("\n")
         print("You missed!")
-        
-
-
+  
 # VALIDATING FUNCTIONS--------------------------
 
 def validate_key(data, valid_keys):
@@ -240,8 +217,7 @@ def validate_key(data, valid_keys):
         elif data not in valid_keys:
             raise ValueError(
                 f"Input--> {data} Only {valid_keys} are valid inputs."
-            )
-       
+            )   
     except ValueError as e:
         print(f"Invalid data: {e}")
         return False
@@ -260,8 +236,6 @@ def validate_player_name(data):
         print(f"Invalid data: {e}")
         return False
     return True
-
-
 
 launch_intro()
 game_menu()
