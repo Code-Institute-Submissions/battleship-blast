@@ -9,6 +9,11 @@ from termcolor import colored
 keys_123 = "1 2 3"
 keys_m = "M"
 keys_exit = "Y M"
+keys_player_guess = "A B C D E"
+
+letters_to_numbers = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4}
+
+
 
 # GAME INTRO, MENU AND INSTRUCTION FUNCTIONS--------------------------
 
@@ -123,10 +128,11 @@ def game_over():
 def validate_key(data, valid_keys):
     """
     Function that validates input data and raises errors accordingly.
-    Correct data should be either 1, 2 or 3
+    Reusable function: used to validate menu selection, used to validate 
+    player row/column guess.
     """
     try:
-        if len(data)!= 1:
+        if len(str(data))!= 1:
             raise ValueError(
                 f'String length--> {len(data)}. Type one value only.'
             )
@@ -201,17 +207,26 @@ def launch_game():
     print("\n")
     global row_choice
     global column_choice
-    missils=0
+    missils=1
     place_random_ships()
     while missils<=15:
-        row_choice = int(input(colored("Enter row coordinate: \n",'green')))
-        column_choice = int(input(colored("Enter column coordinate: \n",'green')))
-        global player_guess
-        player_guess= row_choice, column_choice
-        print(player_guess)
-        missils+=1
-        print(missils)
-        compare_coordinates(board)
+        while True:
+            row_choice_letter = input(colored("Enter row coordinate: \n",'green')).upper()
+            validate_key(row_choice_letter, keys_player_guess)
+            row_choice = letters_to_numbers[row_choice_letter]
+                
+            column_choice_letter = input(colored("Enter column coordinate: \n",'green')).upper()
+            validate_key(column_choice_letter, keys_player_guess)
+            column_choice = letters_to_numbers[column_choice_letter]
+                
+            global player_guess
+            player_guess= row_choice, column_choice
+            print(player_guess)
+            missils+=1
+            print(missils)
+            compare_coordinates(board)
+            if validate_key(column_choice_letter, keys_player_guess) and validate_key(row_choice_letter, keys_player_guess):
+                break
 
 def compare_coordinates(board):
     """
