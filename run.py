@@ -48,7 +48,7 @@ def game_menu():
         print(colored("Launch game--> 2",'green'))
         print(colored("Exit game--> 3",'green'))
         global menu_selection
-        menu_selection=input()
+        menu_selection=input('\n')
         menu_key_options(menu_selection)
 
         if validate_key(menu_selection, keys_123):
@@ -88,7 +88,7 @@ def game_instructions():
         print(colored("• The bottom right corner is coordinates.\n (4, 4)",'green'))
         print("\n")
         print(colored("Go back to menu--> M",'green'))
-        menu_selection= input().upper() 
+        menu_selection= input('\n').upper() 
         menu_key_options(menu_selection)  
         
         if validate_key(menu_selection, keys_m):
@@ -107,7 +107,7 @@ def exit_game():
         print(colored("Quit game--> Y",'green'))
         print(colored("Go back to menu--> M",'green'))
 
-        menu_selection= input().upper() 
+        menu_selection= input('\n').upper() 
         menu_key_options(menu_selection)  
         
         if validate_key(menu_selection, keys_exit):
