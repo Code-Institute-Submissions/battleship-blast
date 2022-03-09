@@ -154,7 +154,7 @@ def place_random_ships():
         coordinate = ship_row, ship_column
         if coordinate not in enemy_ship_coordinates:
             enemy_ship_coordinates.append(tuple(coordinate))
-    print(enemy_ship_coordinates)
+    #print(enemy_ship_coordinates)
 
 def launch_game():
     """
@@ -190,9 +190,9 @@ def launch_game():
                 
         global player_guess
         player_guess= row_choice, column_choice
-        print(player_guess)
+        print(colored(f'You guessed {player_guess} \n','green'))
         missils+=1
-        print(missils)
+        #print(missils)
         compare_coordinates(board)
             
             
