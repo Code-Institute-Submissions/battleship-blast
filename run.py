@@ -174,8 +174,8 @@ def launch_game():
         global player_guess
         player_guess= row_choice, column_choice
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n','green'))
-        misiles+=1
         compare_coordinates(board)
+        misiles+=1
 
 def compare_coordinates(board):
     """
@@ -193,13 +193,13 @@ def compare_coordinates(board):
         print("\n")
         print(colored("You sunk a ship! \n",'green'))
         hits+=1
-        print(hits)
-
     elif player_guess not in enemy_ship_coordinates:
         board[row_choice][column_choice]=" - "
         grid(board)
         print("\n")
-        print("You missed!")
+        print(colored("You missed! \n",'green'))  
+    #if board[row_choice][column_choice] ==' X ' or ' - ':
+        #print(colored("You've already hit this target. Try again!! \n",'green')) 
   
 # VALIDATING FUNCTIONS--------------------------
 
