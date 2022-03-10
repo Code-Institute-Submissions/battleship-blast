@@ -6,7 +6,7 @@ from termcolor import colored
 keys_123 = "1 2 3"
 keys_m = "M"
 keys_exit = "Y M"
-keys_player_guess_row = "A B C D E"
+keys_player_guess_row = "A B C D E "
 keys_player_guess_column = "1 2 3 4 5"
 
 letters_to_numbers = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4}
@@ -72,13 +72,15 @@ def game_instructions():
         print(colored("G A M E    I N S T R U C T I O N S \n",'green'))
         print("\n")
         print(colored("• The battlefield is displayed in a 5 x 5 grid.",'green'))
-        print(colored("• In this field there are 5 battleships hidden.",'green'))
-        print(colored("• Each battleship takes up one single coordinate. For example: (0, 1) \n",'green'))
+        print(colored("• In this field there are 5 battleships hidden.\n",'green'))
+        print(colored("• Rows : A, B, C, D, E,.",'green'))
+        print(colored("• Columns: 1, 2, 3, 4, 5.",'green'))
+        print(colored("• Each battleship takes up one single coordinate. For example: (A, 1) \n",'green'))
         print(colored("• Enter the coordinates to launch the missil. \n",'green'))
         print(colored("• You have a total of 15 missils.",'green'))
         print(colored("• You must sink ALL battleships to defeat the enemy. \n",'green'))
-        print(colored("• The top left corner is coordinate. (0, 0)",'green'))
-        print(colored("• The bottom right corner is coordinates.\n (4, 4)",'green'))
+        print(colored("• The top left corner is coordinate. (A, 1)",'green'))
+        print(colored("• The bottom right corner is coordinates.\n (E, 4)",'green'))
         print("\n")
         print(colored("Go back to menu--> M",'green'))
         menu_selection= input('\n').upper() 
@@ -147,11 +149,6 @@ def launch_game():
     """
     Start Game round. 
     """
-    print(colored('************************************************ \n','green'))
-    print(colored("T H E    B A T T L E F I E L D \n",'green'))
-    print("\n")
-    grid(board)
-    print("\n")
     global row_choice
     global column_choice
     global row_choice_letter
@@ -159,6 +156,11 @@ def launch_game():
     misiles=1
     place_random_ships()
     while misiles<=3:
+        print(colored('************************************************ \n','green'))
+        print(colored("T H E    B A T T L E F I E L D \n",'green'))
+        print("\n")
+        grid(board)
+        print("\n")
         while True:
             row_choice_letter = input(colored("Enter row coordinate: \n",'green')).upper()
             validate_key(row_choice_letter, keys_player_guess_row)
@@ -176,7 +178,14 @@ def launch_game():
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n','green'))
         compare_coordinates(board)
         misiles+=1
+        print("\n")
+        print(colored("Launch next misile--> L",'green'))
+        print(colored("Menu--> M",'green'))
+        print(colored("Quit Game--> Q",'green'))
 
+        exit_option= input('\n').upper() 
+        
+       
 def compare_coordinates(board):
     """
     Function that compares player guess and randomly generated 
@@ -189,10 +198,13 @@ def compare_coordinates(board):
     hits=0
     
     if (board[row_choice][column_choice]) ==" X ":
+        grid(board)
         print(colored("You've already hit this target. Try again!! \n",'green')) 
+        
     elif (board[row_choice][column_choice]) ==" - ":
+        grid(board)
         print(colored("You've already hit this target. Try again!! \n",'green')) 
-    
+        
     elif player_guess in enemy_ship_coordinates:
         board[row_choice][column_choice]=" X "
         grid(board)
@@ -204,12 +216,9 @@ def compare_coordinates(board):
         grid(board)
         print("\n")
         print(colored("You missed! \n",'green'))  
-    #elif (board[row_choice][column_choice]) ==" X ":
-        #print(colored("You've already hit this target. Try again!! \n",'green')) 
-    #elif (board[row_choice][column_choice]) ==" - ":
-        #print(colored("You've already hit this target. Try again!! \n",'green')) 
-    
 
+
+   
 # VALIDATING FUNCTIONS--------------------------
 
 def validate_key(data, valid_keys):
