@@ -8,6 +8,7 @@ keys_m = "M"
 keys_exit = "Y M"
 keys_player_guess_row = "A B C D E "
 keys_player_guess_column = "1 2 3 4 5"
+keys_launch_menu_quit = "L Q"
 
 letters_to_numbers = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4}
 
@@ -60,8 +61,11 @@ def menu_key_options(key_selection):
         exit_game()
     elif key_selection == "M":
         game_menu()
-    elif key_selection == "Y":
+    elif key_selection == "Y" or "Q":
         game_over() 
+    elif key_selection == "L":
+        pass
+
 
 def game_instructions():
     """
@@ -163,12 +167,10 @@ def launch_game():
         print("\n")
         while True:
             row_choice_letter = input(colored("Enter row coordinate: \n",'green')).upper()
-            validate_key(row_choice_letter, keys_player_guess_row)
             if validate_key(row_choice_letter, keys_player_guess_row):
                 break
         while True:        
             column_choice_number = input(colored("Enter column coordinate: \n",'green')).upper()
-            validate_key(column_choice_number, keys_player_guess_column)
             if validate_key(column_choice_number, keys_player_guess_column):
                 break          
         row_choice = letters_to_numbers[row_choice_letter]
@@ -180,11 +182,13 @@ def launch_game():
         misiles+=1
         print("\n")
         print(colored("Launch next misile--> L",'green'))
-        print(colored("Menu--> M",'green'))
         print(colored("Quit Game--> Q",'green'))
 
-        exit_option= input('\n').upper() 
-        
+        while True:
+            exit_option= input('\n').upper() 
+            if validate_key(exit_option, keys_launch_menu_quit):
+                break
+        menu_key_options(exit_option)
        
 def compare_coordinates(board):
     """
