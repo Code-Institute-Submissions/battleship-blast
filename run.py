@@ -187,7 +187,13 @@ def compare_coordinates(board):
     print(colored('************************************************ \n','green'))
     print("\n")
     hits=0
-    if player_guess in enemy_ship_coordinates:
+    
+    if (board[row_choice][column_choice]) ==" X ":
+        print(colored("You've already hit this target. Try again!! \n",'green')) 
+    elif (board[row_choice][column_choice]) ==" - ":
+        print(colored("You've already hit this target. Try again!! \n",'green')) 
+    
+    elif player_guess in enemy_ship_coordinates:
         board[row_choice][column_choice]=" X "
         grid(board)
         print("\n")
@@ -198,9 +204,12 @@ def compare_coordinates(board):
         grid(board)
         print("\n")
         print(colored("You missed! \n",'green'))  
-    #if board[row_choice][column_choice] ==' X ' or ' - ':
+    #elif (board[row_choice][column_choice]) ==" X ":
         #print(colored("You've already hit this target. Try again!! \n",'green')) 
-  
+    #elif (board[row_choice][column_choice]) ==" - ":
+        #print(colored("You've already hit this target. Try again!! \n",'green')) 
+    
+
 # VALIDATING FUNCTIONS--------------------------
 
 def validate_key(data, valid_keys):
