@@ -189,6 +189,9 @@ def launch_game():
             if validate_key(exit_option, keys_launch_menu_quit):
                 break
         menu_key_options(exit_option)
+
+        if exit_option=="Q":
+            break
        
 def compare_coordinates(board):
     """
@@ -203,10 +206,12 @@ def compare_coordinates(board):
     
     if (board[row_choice][column_choice]) ==" X ":
         grid(board)
+        print("\n")
         print(colored("You've already hit this target. Try again!! \n",'green')) 
         
     elif (board[row_choice][column_choice]) ==" - ":
         grid(board)
+        print("\n")
         print(colored("You've already hit this target. Try again!! \n",'green')) 
         
     elif player_guess in enemy_ship_coordinates:
