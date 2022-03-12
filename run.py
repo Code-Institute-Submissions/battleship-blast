@@ -9,6 +9,7 @@ keys_exit = "Y M"
 keys_player_guess_row = "A B C D E "
 keys_player_guess_column = "1 2 3 4 5"
 keys_launch_menu_quit = "L Q"
+game_over_keys = "M Q"
 
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4}
 
@@ -73,8 +74,8 @@ def game_instructions():
         print("\n")
         print(colored("• Battlefield display: 5 x 5.", 'green'))
         print(colored("• There here are 5 hidden battleships.\n", 'green'))
-        print(colored("• Rows : A, B, C, D, E,.", 'green'))
-        print(colored("• Columns: 1, 2, 3, 4, 5.", 'green'))
+        print(colored("• Rows : A, B, C, D, E", 'green'))
+        print(colored("• Columns: 1, 2, 3, 4, 5", 'green'))
         print(colored("• Each ship takes up one coordinate", 'green'))
         print(colored("• For example: (A, 1)\n", 'green'))
         print(colored("• Enter coordinates to launch missil. \n", 'green'))
@@ -102,7 +103,6 @@ def exit_game():
         print(colored("Quit game--> Y", 'green'))
         print(colored("Go back to menu--> M", 'green'))
         menu_selection = input('\n').upper()
-        menu_key_options(menu_selection)
         if validate_key(menu_selection, keys_exit):
             break
 
@@ -177,11 +177,12 @@ def launch_game():
         compare_coordinates(board)
         misiles += 1
         print("\n")
+
         print(colored("Launch next misile--> L", 'green'))
         print(colored("Quit Game--> Q", 'green'))
 
         while True:
-            exit_option = input('\n').upper() 
+            exit_option = input('\n').upper()
             if validate_key(exit_option, keys_launch_menu_quit):
                 break
         menu_key_options(exit_option)
@@ -200,46 +201,73 @@ def compare_coordinates(board):
     print(colored('**************************** \n', 'green'))
     print("\n")
     hits = 0
-    if (board[row_choice][column_choice]) ==" X ":
+    global ships_sunk
+    ships_sunk = 0
+    if (board[row_choice][column_choice]) == " X ":
         grid(board)
         print("\n")
-        print(colored("You've already hit this target. Try again!! \n", 'green')) 
-        
-    elif (board[row_choice][column_choice]) ==" - ":
+        print(colored("You've already hit this target.", 'green'))
+        print(colored("Try again!! \n", 'green'))
+    elif (board[row_choice][column_choice]) == " - ":
         grid(board)
         print("\n")
-        print(colored("You've already hit this target. Try again!! \n", 'green')) 
-        
+        print(colored("You've already hit this target.", 'green'))
+        print(colored("Try again!! \n", 'green'))
     elif player_guess in enemy_ship_coordinates:
-        board[row_choice][column_choice]=" X "
+        board[row_choice][column_choice] = " X "
         grid(board)
         print("\n")
         print(colored("You sunk a ship! \n", 'green'))
-        hits+=1
+        hits += 1
+        ships_sunk += 1
     elif player_guess not in enemy_ship_coordinates:
-        board[row_choice][column_choice]=" - "
+        board[row_choice][column_choice] = " - "
         grid(board)
         print("\n")
-        print(colored("You missed! \n", 'green'))  
+        print(colored("You missed! \n", 'green'))
 
 def end_score():
-    print(end score here!)
-   
-# VALIDATING FUNCTIONS--------------------------
+    """
+    End of rounds displaying final score.
+    Requests play again or exit game.
+    """
+    print(colored('**************************** \n', 'green'))
+    print("\n")
+    if ships_sunk < 5:
+        print(colored("G A M E  O V E R \n", 'green'))
+        print("\n")
+        print(colored(f"{player_name}'s score: \n", 'green'))
+        print(colored(f'{ships_sunk} ships sunk. \n', 'green'))
+        print(colored(f'{5 - ships_sunk}ships remain. \n', 'green'))
+        print("\n")
+    elif ships_sunk == 5:
+        print(colored("V I C T O R Y ! \n", 'green'))
+        print(colored(f"{player_name}, you sank all enemy ships! \n", 'green'))
+        print("\n")
+    print(colored("Go back to menu--> M", 'green'))
+    print(colored("Quit Game--> Q", 'green'))
+    while True:
+            exit_option = input(colored('Play again?\n', 'green')).upper()
+            if validate_key(menu_key_options(exit_option), game_over_keys):
+                break
+    print(colored("Go back to menu--> M", 'green'))
+    print(colored("Quit Game--> Q", 'green'))
+    menu_key_options(exit_option)
 
+# VALIDATING FUNCTIONS--------------------------
 def validate_key(data, valid_keys):
     """
     Function that validates data.
     """
     try:
-        if len(str(data))!= 1:
+        if len(str(data)) != 1:
             raise ValueError(
                 f'String length--> {len(data)}. Type one value only.'
             )
         elif data not in valid_keys:
             raise ValueError(
                 f"Input--> {data} Only {valid_keys} are valid inputs."
-            )   
+            )
     except ValueError as e:
         print(f"Invalid data: {e}")
         return False
@@ -261,4 +289,3 @@ def validate_player_name(data):
 
 launch_intro()
 game_menu()
-
