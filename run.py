@@ -5,11 +5,10 @@ from termcolor import colored
 # GLOBAL VARIABLES ------------------------------
 keys_123 = "1 2 3"
 keys_m = "M"
-keys_exit = "Y M"
 keys_player_guess_row = "A B C D E "
 keys_player_guess_column = "1 2 3 4 5"
 keys_launch_menu_quit = "L Q"
-game_over_keys = "M Q"
+yes_no_keys = "Y N"
 
 ships_sunk = 0
 hits = 0
@@ -25,7 +24,7 @@ def launch_intro():
         print(colored('********************************* \n', 'green'))
         print(colored("B A T T L E S H I P   B L A S T \n", 'green'))
         global player_name
-        player_name = input(colored("Enter player name: \n", 'green'))
+        player_name = input(colored("Enter player name: \n", 'green')).title()
 
         if validate_player_name(player_name):
             break
@@ -59,9 +58,9 @@ def menu_key_options(key_selection):
         launch_game()
     elif key_selection == "3":
         exit_game()
-    elif key_selection == "M":
+    elif key_selection == "M" or "N":
         game_menu()
-    elif key_selection == "Y" or "Q":
+    elif key_selection == "Q":
         game_over()
     elif key_selection == "L":
         pass
@@ -89,30 +88,6 @@ def game_instructions():
         if validate_key(menu_selection, keys_m):
             break
     menu_key_options(menu_selection)
-
-def exit_game():
-    """
-    Exit Game
-    """
-    while True:
-        print(colored('******************* \n', 'green'))
-        print(colored("Q U I T   G A M E \n", 'green'))
-        print(colored("The enemy is so close... \n", 'green'))
-        print(colored("Will you admit defeat and quit now? \n", 'green'))
-        print(colored("Quit game--> Y", 'green'))
-        print(colored("Go back to menu--> M", 'green'))
-        menu_selection = input('\n').upper()
-        if validate_key(menu_selection, keys_exit):
-            break
-    menu_key_options(menu_selection)
-
-def game_over():
-    """
-    Function that triggers display of GAME OVER page
-    """
-    print(colored('***************************** \n', 'green'))
-
-    print(colored("G A M E    O V E R", 'green'))
 
 # GAME ROUND FUNCTIONS--------------------------
 board = []
@@ -187,15 +162,15 @@ def launch_game():
 
         print(colored("Launch next misile--> L", 'green'))
         print(colored("Quit Game--> Q", 'green'))
+        print(colored("If Q, all advances will be lost.", 'green'))
 
         while True:
             exit_option = input('\n').upper()
             if validate_key(exit_option, keys_launch_menu_quit):
                 break
-        menu_key_options(exit_option)
-
         if exit_option == "Q":
             break
+        menu_key_options(exit_option)
     end_score()
 
 def compare_coordinates(board):
@@ -242,7 +217,7 @@ def end_score():
     if ships_sunk < 5:
         print(colored("G A M E  O V E R \n", 'green'))
         print("\n")
-        print(colored(f"{player_name}'s score: \n", 'green'))
+        print(colored(f"{player_name}, you lose... \n", 'green'))
         print(colored(f'{ships_sunk} ships sunk. \n', 'green'))
         print(colored(f'{5 - ships_sunk} ships remain. \n', 'green'))
         print("\n")
@@ -250,15 +225,46 @@ def end_score():
         print(colored("V I C T O R Y ! \n", 'green'))
         print(colored(f"{player_name}, you sank all enemy ships! \n", 'green'))
         print("\n")
-    print(colored("Go back to menu--> M", 'green'))
-    print(colored("Quit Game--> Q", 'green'))
+    print(colored("Play again?", 'green'))
+    print(colored("Yes--> Y", 'green'))
+    print(colored("No--> N", 'green'))
     while True:
-        exit_option = input(colored('Play again?\n', 'green')).upper()
-        if validate_key(exit_option, game_over_keys):
+        exit_option = input(colored('\n', 'green')).upper()
+        if validate_key(exit_option, yes_no_keys):
             break
     print(colored("Go back to menu--> M", 'green'))
     print(colored("Quit Game--> Q", 'green'))
-    menu_key_options(exit_option)
+    if exit_option == "N":
+        game_over()
+    elif exit_option == "Y":
+        game_menu()
+
+def exit_game():
+    """
+    Exit Game
+    """
+    while True:
+        print(colored('******************* \n', 'green'))
+        print(colored("Q U I T   G A M E \n", 'green'))
+        print(colored("The enemy is so close... \n", 'green'))
+        print(colored("Will you admit defeat and quit now? \n", 'green'))
+        print(colored("Yes, quit now--> Y", 'green'))
+        print(colored("No--> N", 'green'))
+        exit_choice = input('\n').upper()
+        if validate_key(exit_choice, yes_no_keys):
+            break
+    if exit_choice == "Y":
+        game_over()
+    elif exit_choice == "N":
+        game_menu()
+
+def game_over():
+    """
+    Function that triggers display of GAME OVER page
+    """
+    print(colored('***************************** \n', 'green'))
+
+    print(colored("G A M E    O V E R", 'green'))
 
 # VALIDATING FUNCTIONS--------------------------
 def validate_key(data, valid_keys):
