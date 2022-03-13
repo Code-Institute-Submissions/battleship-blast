@@ -46,10 +46,9 @@ def game_menu():
         print(colored("G A M E    M E N U \n", 'green'))
         print(colored("War is imminent....", 'green'))
         print(colored(f'{player_name}, prepare for battle! \n', 'green'))
-        print(colored("Game Instructions--> 1", 'green'))
+        print(colored("Instructions--> 1", 'green'))
         print(colored("Launch game--> 2", 'green'))
-        print(colored("Exit game--> 3", 'green'))
-        
+        print(colored("Exit --> 3", 'green'))
         menu_selection = input('\n')
         if validate_key(menu_selection, keys_123):
             break
@@ -59,7 +58,7 @@ def game_menu():
         launch_game()
     elif menu_selection == "3":
         exit_game()
-          
+
 def game_instructions():
     """
     Game instructions
@@ -153,10 +152,9 @@ def launch_game():
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n', 'green'))
         compare_coordinates(board)
         misiles += 1
-        misiles_left = 15 - misiles 
+        misiles_left = 15 - misiles
         print(colored(f'{misiles_left} misiles left \n', 'green'))
         print("\n")
-
         print(colored("Launch next misile--> L", 'green'))
         print(colored("Quit Game--> Q", 'green'))
         print(colored("If Q, all advances will be lost.", 'green'))
@@ -287,7 +285,7 @@ def validate_player_name(data):
     Function validating player name.
     """
     try:
-        if (data.isalpha()) == False:
+        if (data.isalpha()) is False:
             raise ValueError(
                 f'You entered {data} which is not an alphabetical string,'
             )
