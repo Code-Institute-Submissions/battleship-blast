@@ -64,7 +64,7 @@ def game_instructions():
     Game instructions
     """
     while True:
-        print(colored('****************************************************************************************** \n', 'green'))
+        print(colored('******************************************************************************** \n', 'green'))
         print(colored("G A M E  I N S T R U C T I O N S \n", 'green'))
         print(colored("• Battlefield display: 5 x 5.", 'green'))
         print(colored("• There here are 5 hidden battleships.\n", 'green'))
@@ -132,7 +132,7 @@ def launch_game():
     while misiles <= 15:
         if ships_sunk == 5:
             break
-        print(colored('******************************************************************************************\n', 'green'))
+        print(colored('******************************************************************************** \n', 'green'))
         print(colored("T H E    B A T T L E F I E L D \n", 'green'))
         print("\n")
         grid(board)
@@ -176,7 +176,7 @@ def compare_coordinates(board):
     Prints a message on the screen.
     Prints an X (hit) or a - (miss) on the grid.
     """
-    print(colored('**************************** \n', 'green'))
+    print(colored('******************************************************************************** \n', 'green'))
     print("\n")
     global hits
     global ships_sunk
@@ -208,7 +208,7 @@ def end_score():
     End of rounds displaying final score.
     Requests play again or exit game.
     """
-    print(colored('******************************************************************************************\n', 'green'))
+    print(colored('******************************************************************************** \n', 'green'))
     print("\n")
     if ships_sunk < 5:
         print(colored("G A M E  O V E R \n", 'green'))
@@ -239,7 +239,7 @@ def exit_game():
     Exit Game
     """
     while True:
-        print(colored('****************************************************************************************** \n', 'green'))
+        print(colored('******************************************************************************** \n', 'green'))
         print(colored("Q U I T   G A M E \n", 'green'))
         print(colored("The enemy is so close... \n", 'green'))
         print(colored("Will you admit defeat and quit now? \n", 'green'))
@@ -257,8 +257,7 @@ def game_over():
     """
     Function that triggers display of GAME OVER page
     """
-    print(colored('***************************** \n', 'green'))
-
+    print(colored('******************************************************************************** \n', 'green'))
     print(colored("G A M E    O V E R", 'green'))
 
 # VALIDATING FUNCTIONS--------------------------
