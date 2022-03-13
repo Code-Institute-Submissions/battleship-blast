@@ -29,6 +29,7 @@ This online interactive game targets all ages 10+, and that is its beauty! Almos
 *   Adults
 
   
+* * *
 
 USER STORIES:
 -------------
@@ -70,78 +71,119 @@ STRUCTURE:
 
 * * *
 
-### Header & Footer
+### Initial Game Load
 
 * * *
 
 #### _Header - Game Title_
 
-*   The Gmae title is displayed as soon as the game is launched. Minimalist uppercase font!
-*   Playe name is requested, and 
+*   The Game title is displayed as soon as the game is launched. Minimalist uppercase green font.
+*   Playe name is requested, which will be used thoughout the game.
 
 <img src="assets/images/header.png" width="500px">
 
 
 * * * 
 
-### Initial Home page - _launch game modal_
+### Menu Selection 
 
 * * *
 
-The initial homepage consists of:
+The initial menu section is simple, to the point and consists of 3 navigation options:
 
-* The header, containing the name of the game: Rock, Paper, Scissors. It is clearly displayed at the top of the page in bright, large, fun contrasting styling.
-* An image of three hand symbols representing rock, paper and scissors. They are minimalistic and complementory to the page's fun, bold, simplistic styling.
-* A small form where the Player will be required to submit their name. The form will not submit without this information. The submit button is styled in the same colors as the header and it reads "Let's rock!".
+* 1 : Game Instructions
+* 2 : Launch Game
+* 3 : Exit Game
 
 
 <img src="assets/images/mobile-launch-display.png" width="200px">
 
 * * * 
   
-### Playing first round- _play round 1 display_
+### Game Instructions 
 
 * * *
 
-When clicking "let's rock!" in the initial form, you are taken to the initial play round modal. This displays:
+When typing 1 into the terminal, the user is directed to this page consisting of game instructions.
 
-* A short subtitle displaying Round number 1. This allows the user to immediately recognise there will be a set number of rounds and will make the game progress easy to track. 
-* Rock, Paper and Scissors interactive buttons. These are styled in the same bright bold colors, fun font, and are displayed clearly in the centre of the page.
-
+* Ths contains a header labelled GAME INSTRUCTIONS. All section headers are displayed in a similar style (uppercase, gaps in between letters)
+* The instructions which are:
+    * Clear and consise
+    * Arranged in bullet points
+    * Separated into relevant sections.
+*The user must type M to return to the MENU.
 
 <img src="assets/images/mobile-round1-display.png" width="200px">
 
- 
+* * *
 
-### After initial Rock, paper, scissors selection - _play round 2 to round 5 display_
+### Exit Game
 
 * * *
 
-After the user selecting their first choice of Rock, Paper or Scissors, they are lead to the next modal (play-round-2 modal). There are only a couple of additions to this display:
+From MENU, when typing 3 into the terminal, the user is directed to the EXIT GAME section.
 
-*   The same subtitle displaying Round Number: x. The round has been updated using Javascript. It will increment +1 each time, until reaching Round 5.
-*   The selection buttons for the next round remain displayed below for game continuity.
-*   A div clearly displaying the Game tally of win, lose, and draw. The score is underlined.
-*   A visual representation of the User and Computer's selection. This is divided into:
-    * User and computer image of their selection (rock, paper, or scissors). They are centred and facing each other as they would in real life.
-    * A label underneath each image. The User's player label displays the Name that has been input into the form. The computers label simply displays _Computer:_
-*   A div containing the previous rounds result: An short alert message displaying previous round result: You win!, You lose!, or You draw!
+* This contains a header labelled QUIT GAME.
+* A few lines which aim to convince the user to stay on. The language challenges the user.
+* 2 options (user must type selection):
+    * Y to quit now : which leads to GAME OVER
+    * N to play game : which directs the user back to MENU
 
 
 <img src="assets/images/mobile-playround-display.png" width="200px">
   
 * * * 
 
-### Game Over Modal: displayed after Round 5 - _game over display_
+### Game Over 
 
 * * *
 
-After the user has selected their final choice in Round 5, they are redirected to the Game Over Modal. This displays:
+From EXIT GAME, when typing Y into the terminal, the user is directed to the GAME OVER SECTION
 
-* A div clearly displaying the Game tally of win, lose, and draw. The score is underlined.
-* The initial two rock symbols facing each other (as on round 1).
-* Final Alert message displaying the game result: You win! You lose! You draw! 
-* A Refresh button to restart the game. It is styled in the same way as the previous buttons. Clicking this button will trigger a function resetting the game back to _launch-game-modal_
+This section simply displays the words GAME OVER.
+
+<img src="assets/images/mobile-gameover-display.png" width="200px">
+
+* * *
+
+### Launch Game Rounds
+
+* * *
+
+From MENU, when typing 3 into the terminal, the user is finally directed to the GAME section.
+This displays:
+* Header labelled THE BATTLEFIELD
+* The board grid:
+    * 5 x 5
+    * Rows: A B C D E
+    * Columns: 1 2 3 4 5
+    * Each cooridnate is represented by a .
+* Enter ROW input
+* Enter COLUMN input
+
+
+Once the user inputs both coordinates, the following options:
+* Result: 
+    * You sunk a ship!
+    * You missed!
+    * You've already hit this target, Try again!!
+* Selection    
+    * Launch next misile - L
+    * Quit Game - Q (And a reminder, that if quiting, all advances will be lost)
+
+
+If selecting Q, the user is directed to EXIT GAME section.
+
+* * *
+
+If selecting L:
+
+The layout remains the same.
+The grid has been updated.
+The coordinate previously selected will have:
+* "X" - hit ship
+* "-" - miss
+
 
 <img src="assets/images/mobile-gameover-display.png" width="200px">
 
@@ -152,37 +194,27 @@ After the user has selected their final choice in Round 5, they are redirected t
 -----------
 
 ### WIREFRAMES:
-* I began designing from a mobile display. I wanted the site to look very minimalistic, with big bright buttons and visual representations of rock, paper, scissors. 
-
-<img src="./assets/images/wireframe-mobile-display.png" width="800px">
-
-
-* For the wide screen display, I wanted a very similar layout, but a bit more widespread. 
-
-<img src="./assets/images/wireframe-large-display.png" width="1000px">
-
-As seen above, I initially wanted the header Rock paper Scissors displayed throughout the entire game. I decided to rmeove it from the game rounds, as I wanted to make sure that the user would NEVER have to scroll down for their result. Removing the header allowed me to maintain the font and buttons large enough and user friendly.
-
 
 * * * 
 
 ## SURFACE:
 
 * * *
+* When initially planning this game, knowing it would be ran in a terminal only i knew it would be minimalistic.
+* Before starting, I created the wireframes displayed above. I knew I wanted the game to be minimal, retro 80's PC style.
 
-Before starting, I created the wireframes displayed above. I knew I wanted the game to be minimalistic, fun, and bright. 
+<img src="./assets/images/wireframes-visual.png" width="800px">
 
+* * *
 
 ### Colors
 
 * * *
 
-For the purpose of this game, I wanted to choose very block, bright, almost cartoon-like colors that would work well together.
-I came up with the following palette:
+ When discovering more python packages, I decided to incorporate termcolor to add a pop of color to my terminal.
+ I decided to go with a retro, 80's style console and incorporated a GREEN font.
 
-<img src="assets/images/green.png" width="200px">
-<img src="assets/images/black.png" width="200px">
-<img src="assets/images/whitesmoke.png" width="200px">
+<img src="./assets/images/retro-terminal.png" width="800px">
 
 
 * * * 
@@ -191,8 +223,10 @@ I came up with the following palette:
 
 * * *
 
-Shadows into Light: I wanted to use a playful font that would go nicely with the game. It is fun, relaxed, cartoon-like, and it has some personality! My fall-back font is Sans, which I think also goes nicely with the site's feel and purpose.
-I initially wanted to combine it with another font, but once I started styling, I preferred keeping it the one.
+Using the standard console typography: but played around with a few things
+* Use of spacing in headers : H E A D E R
+* Use of "************" for page break and separation
+
 
 <img src="assets/images/shadowsintolight-font.png" width="600px">
 
@@ -201,8 +235,8 @@ I initially wanted to combine it with another font, but once I started styling, 
 * * *
 <img src="assets/images/rock-paper-scissors.jpg" width="600px">
 
-*   Sticking to my cartoon-like inspiration for this game, I chose incredibly minimalistic icons for the Rock, paper, and scissors. These images almost feel like emojis, they are modern and fun. 
-*   I also chose to keep the palette simple with black and white. It is bold and the user is instantly drawn to them.
+No use of image or icons.
+Everything was built using letters, numbers, typographical symbols and punctuation.
 
 * * * 
 

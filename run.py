@@ -58,11 +58,8 @@ def game_menu():
     elif menu_selection == "2":
         launch_game()
     elif menu_selection == "3":
-        # exit_game()
-        os.execv(sys.executable, ['python'] + sys.argv + [player_name])
-        
-        
-        
+        exit_game()
+          
 def game_instructions():
     """
     Game instructions
