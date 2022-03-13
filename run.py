@@ -1,6 +1,10 @@
 # IMPORTS ---------------------------------------
+import os
+import sys
+
 import random
 from termcolor import colored
+
 
 # GLOBAL VARIABLES ------------------------------
 keys_123 = "1 2 3"
@@ -14,6 +18,9 @@ ships_sunk = 0
 hits = 0
 
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4}
+
+if len(sys.argv) > 1:
+    player_name = sys.argv[1]
 
 # GAME INTRO, MENU AND INSTRUCTION FUNCTIONS--------------------------
 def launch_intro():
@@ -42,29 +49,20 @@ def game_menu():
         print(colored("Game Instructions--> 1", 'green'))
         print(colored("Launch game--> 2", 'green'))
         print(colored("Exit game--> 3", 'green'))
-        global menu_selection
+        
         menu_selection = input('\n')
         if validate_key(menu_selection, keys_123):
             break
-    menu_key_options(menu_selection)
-
-def menu_key_options(key_selection):
-    """
-    Function that directs the user to their chosen option
-    """
-    if key_selection == "1":
+    if menu_selection == "1":
         game_instructions()
-    elif key_selection == "2":
+    elif menu_selection == "2":
         launch_game()
-    elif key_selection == "3":
-        exit_game()
-    elif key_selection == "M" or "N":
-        game_menu()
-    elif key_selection == "Q":
-        game_over()
-    elif key_selection == "L":
-        pass
-
+    elif menu_selection == "3":
+        # exit_game()
+        os.execv(sys.executable, ['python'] + sys.argv + [player_name])
+        
+        
+        
 def game_instructions():
     """
     Game instructions
@@ -87,7 +85,8 @@ def game_instructions():
         menu_selection = input('\n').upper()
         if validate_key(menu_selection, keys_m):
             break
-    menu_key_options(menu_selection)
+    if menu_selection == "M":
+        game_menu()
 
 # GAME ROUND FUNCTIONS--------------------------
 board = []
@@ -170,7 +169,8 @@ def launch_game():
                 break
         if exit_option == "Q":
             break
-        menu_key_options(exit_option)
+        elif exit_option == "L":
+            pass
     end_score()
 
 def compare_coordinates(board):
@@ -232,12 +232,11 @@ def end_score():
         exit_option = input(colored('\n', 'green')).upper()
         if validate_key(exit_option, yes_no_keys):
             break
-    print(colored("Go back to menu--> M", 'green'))
-    print(colored("Quit Game--> Q", 'green'))
     if exit_option == "N":
         game_over()
     elif exit_option == "Y":
-        game_menu()
+        os.execv(sys.executable, ['python'] + sys.argv + [player_name])
+
 
 def exit_game():
     """
@@ -299,5 +298,7 @@ def validate_player_name(data):
         return False
     return True
 
-launch_intro()
+if len(sys.argv) == 1:
+    launch_intro()
+
 game_menu()

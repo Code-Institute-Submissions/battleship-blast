@@ -23,9 +23,9 @@ _Battleships Blasts_ is an online game of the classic game of Battleships. The p
 
 * * *
 
-This online interactive game targets all ages 10+, and that is its beauty! Almost anyone can appreciate a good game of rock, paper, scissors.
+This online interactive game targets all ages 10+, and that is its beauty! Almost anyone can appreciate a good strategic game of Battleships.
 
-*   Children 5+
+*   Children 10+
 *   Adults
 
   
@@ -35,10 +35,17 @@ USER STORIES:
 
 * * *
 
-1. The site is designed in a way that makes the game fun and easy to play.
+1. The site is designed in a way that makes the game cool, strategic but easy to play.
 2. The game feels personal as the user can input their name and see it displayed throughout.
-3. The game rounds and scores are displayed throughout. 
-4. The user will want to play again and again!
+3. The game instructions are clear and concise and can be easily accessed at the start of the game.
+4. The user can exit the game at any time.
+5. The game displays a cool, clear grid where the user can visually see their battlefield.
+6. The game grid is updated with every round, visually portraying hits and misses, and the user is provided with valuable information: 
+    1. Message confirming hit, miss or duplicate hit.
+    2. Missils left.
+    3. Option to launch next misile or exit game.
+7. The user will want to play agin and again!
+
 
 
 * * * 
@@ -49,12 +56,12 @@ STRAGETY:
 
 * * *
 
-Create a fun and easy to navigate interactive game of Rock, Paper & Scissors that allows the player to play against the computer who will generate its choice at random. 
-The game will last 5 rounds, displaying the tally throughout. After Round 5 the game will display the Game Winner, and allow for the option to _Play Again_.
+Create a cool and strategic looking, yet easy to navigate interactive game of Battleships that allows the player to play against the computer who will generate its hidden ship coordinates at random. 
+The user will have a set number of missils, and the results will be displayed throughout the game. Once all missils have been launched (or the user manages to sink all ships) the game will display the Game Result, and allow for the option to _Play Again_.
 
 
-The site aesthetic is minimalistic: displays big buttons and bold images of the player and computer choice. It is styled with bright and contrasting colors.
-Consistent styling for easy navigation using a mobile-first approach and then ensuring it displays flawlessly across all devices. Create a code that is clear and allows to update with ease.
+The site aesthetic is very simple, retro 80's PC: as it is all on the terminal I wanted to keep it with the classic old school green font,
+Create a code that is clear and allows to update with ease. The game can be eaisly navigated by the user!
 
 * * * 
 
@@ -69,8 +76,8 @@ STRUCTURE:
 
 #### _Header - Game Title_
 
-*   The header displaying the game title is clearly displayed at the top of the HTML page.
-*   It is styled in CSS with fun font-family and in bright and contrasting colors which set the mood to the game.
+*   The Gmae title is displayed as soon as the game is launched. Minimalist uppercase font!
+*   Playe name is requested, and 
 
 <img src="assets/images/header.png" width="500px">
 
