@@ -195,6 +195,18 @@ The coordinate previously selected will have:
 
 ### WIREFRAMES:
 
+
+* * * 
+
+## THE CODE:
+
+* * *
+
+Prior to commencing to write my code out, I planned out the functions required.
+
+<img src="./assets/images/wireframes-functions.png" width="1000px">
+
+
 * * * 
 
 ## SURFACE:
