@@ -1,4 +1,4 @@
-Battleships Blast - An Interactive online Game of Battleship
+Battleships Blast - An Interactive Online Game of Battleship
 ==================================
 
 * * *
@@ -259,44 +259,92 @@ FEATURES:
 
 ### Current features
 
-*   Launch Game Page: This is the page that initially loads when you first arrive to the site. 
-    * Header: "Rock, Paper, Scissors"
-    * Image of rock, paper and scissors
-    * Player name input form (required)
-    * Submit button labelled "Let's Rock!"
+*   INTRODUCTION: This is the page that initially loads when you first arrive to the site. 
+    * Header: "B A T T L E F I E L D S"
+    * Player name input form (required, and validated before submitting)
 
   <img src="assets/images/tablet-launch-display.png" width="500px"> 
 
-*   Play Round Modal: which loads once the user has submitted the form. The form takes the players name and uses it below.
-    * Round number
-    * 3 clickable buttons labelled: Rock, Paper and Scissors.
-    * A tally of the score to show the user what will be counted for: _Win:0, Draw:0, Lose:0_
-    * 2 ROCK images facing each other
+*   MENU: which loads once the user has input player name and it has been validated. The form takes the players name and uses it below.
+    * Header: M E N U
+    * Personalised message to prepare for battle
+    * 3 options:
+        * Instructions - 1
+        * Launch game - 2
+        * Exit game - 3
+    * Play input request: request is validated before redirecting.
 
  <img src="assets/images/tablet-round1-display.png" width="500px"> 
 
-*   As from Round 2... same as above, plus...
-    * The round number will update itself each round!
-    * A tally of the current score (which will update round after round): For example: _Win: 0 Draw: 1 Lose: 2_
-    * A black box with the outcome of the previous play: For example: _You Draw!_
+*   INSTRUCTIONS - when entering 1
+    * Header: I N S T R U C T I O N S 
+    * Listed game instructions in bullet points
+    * Separated by spaces to make rules clearer.
+    * Instruction to enter M - go back to menu
+    * Player input request. (Validated before redirecting)
 
  <img src="assets/images/tablet-playround-display.png" width="500px"> 
 
-* After the final Round 5...
-    * The final score tally.
-    * The initial two rock symbols facing each other (as on round 1).
-    * The final game result. For example: _Congratulations, you win!_
-    * A Refresh button, to play again! (This takes the user back to the start)
+* QUIT GAME - when entering 3 from MENU
+    * Header: Q U I T   G A M E 
+    * Message confirming if user wnats to exit game. Language is challenging the user.
+    * Question player. Quit game?
+        * If Y - GAME OVER
+        * If N - back to MENU
 
 <img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+* GAME OVER - when entering Y from QUIT GAME
+    * Message displaying G A M E  O V E R
+
+<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+* LAUNCH GAME ROUND - when entering 2 from MENU
+    * Header: B A T T L E F I E L D
+    * Battlefield Grid:
+        * Rows: A B C D E
+        * Columns: 1 2 3 4 5
+    * Input request: Enter row (validated before submitting)
+    * Input request: Enter column (validated before submitting)
+
+<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+* AFTER SUBMITTING COORDINATES - results added!
+    * Message confirming hit, miss, or repeated coordinate.
+    * Options to:
+        * Launch next misile - L
+        * Quit game - Q
+    * Request player input (validated before submitting)
+
+<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+
+* 2nd ROUND ONWARDS...
+    * Exactly the same as before but adding:
+        * Misils left
+        * X (sunk) or - (missed) on grid where player has previously hit.
+
+<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+* END SCORE (Either after completing 15 rounds, or having sunk all ships)
+    * Header: G A M E  O V E R 
+    * Personalised message: You win or You lose!
+    * Number of ships sank
+    * Number of ships remaining
+    * Options, play again?
+        * Y - yes (validated before submitting)
+        * N - no (validated before submitting)
+
+<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
 
 * * * 
 
 ### Future features
 
-* I would love to include some animation with the hand images such as: visual clash of computer and user hands as one beats the other.
-* I would like to change the layout so that the selection buttons, start game button and play again button are all in the exact same place on the page display. I think this would allow for an easier flow of the game.
-* Ideally I would like to always have the Header displaying game title on top. This was my initial plan, but considering my deadline and having prioritised the javascript side of this project, I decided it was more important for me to remove any need for the user to scroll down. Removing the header in these Round sections was the easiest way to achieve this.
+* Include a player grid with the player randomly selected ships.
+* Allow player to select where to place their ships
+* Longer ships ocupying more coordinates.
 
 * * * 
 
@@ -304,9 +352,8 @@ FEATURES:
 
 * * *
 
-*   HTML5
-*   CSS
-*   Javascript
+*   PYTHON
+
 
 * * * 
 
@@ -315,16 +362,14 @@ FEATURES:
 
 * * *
 
-*   [Google Fonts](https://fonts.google.com/)
 *   [GitHub](https://github.com/)
 *   [GitPod](https://www.gitpod.io/)
-*   [Coolors](https://coolors.co/)
-*   [Pexels](https://www.pexels.com/)
+*   [Heroku](https://id.heroku.com/login)
 *   [Stack Overflow](https://stackoverflow.com/)
 *   [Code beautify](https://codebeautify.org/html-to-markdown)
-*   [Compress Jpeg](https://compressjpeg.com/)
-*   [Font Awesome](https://fontawesome.com/)
-*   [Favicon](https://favicon.io/)
+*   [Balsamiq](https://balsamiq.com/wireframes/desktop/#)
+*   [Pep8](http://pep8online.com/)
+
 
 
 * * * 
@@ -342,7 +387,7 @@ For testing I used the following sources:
 
 * * *
 
-#### [HTML Validator](https://validator.w3.org/)
+#### [Pep8](http://pep8online.com/)
 
 Tested and no errors found.
 Warnings:
@@ -386,41 +431,6 @@ During this testing I did notice a big problem with the end result! This is expl
 * All images load properly and are fully visible to the user.
 * Nav bar is always visible and footer is fixed always displayed at the bottom of the screen and fully visible.
 * The site has responsive design, allowing the website and its features to be fully displayed (visible) on all display sized: phone, tablets, laptops, larger screens.
-
-#### Responsive design:
-##### Phone Display
-* I took a mobile first design approach, so the website runs very smoothly from a mobile screen. 
-* The header bar is fully visible and remains at the top and footer is fixed at the bottom, large enough to view and click into the Github icon yet not distracting from its content. For continuity, they remain this way during the entire game.
-* The initial home screen is welcoming, displaying the Rock, Paper, scissors image upon loading and its form.
-* The initial form is of an appropriate size, and easily clickable to input the field text and click the submit button.
-* During the 5 game rounds the following features remained displayed in the same position: Round number, selection buttons, score tally, user-image and computer-image hands, and the round result.
-
-<img src="assets/images/mobile-launch-display.png" width="200px">
-<img src="assets/images/mobile-playround-display.png" width="200px">
-<img src="assets/images/mobile-gameover-display.png" width="200px">
-* * * 
-
-##### Tablet Display 
-* The tablet displays nicely on stages of the game.
-* The buttons have spread out further across the width of the display, and the sizes have been increased.
-* The image sizes have also been slightly increased.
-* Font size has been increased also.
-
-<img src="assets/images/tablet-launch-display.png" width="400px">
-<img src="assets/images/tablet-playround-display.png" width="400px">
-<img src="assets/images/tablet-gameover-display.png" width="400px">
-
-* * * 
-
-##### Laptop & larger screens Display 
-* The laptop also displays nicely on all pages. 
-* The button sizes are larger again.
-* Font size has been increased also.
-* The Score area and final result areas have been placed in a narrower div that is aligned with the button width.
-
-<img src="assets/images/large-launch-display.png" width="400px">
-<img src="assets/images/large-playround-display.png" width="400px">
-<img src="assets/images/large-gameover-display.png" width="400px">
 
 
 * * * 
