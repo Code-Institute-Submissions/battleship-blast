@@ -129,7 +129,7 @@ def launch_game():
     hits = 0
     misiles = 0
     place_random_ships()
-    while misiles <= 15:
+    while misiles <= 14:
         if ships_sunk == 5:
             break
         print(colored('******************************************************************************** \n', 'green'))
@@ -137,6 +137,9 @@ def launch_game():
         print("\n")
         grid(board)
         print("\n")
+        misiles_left = 15 - misiles
+        print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
+
         while True:
             row_choice_letter = input(colored("Enter row: \n", 'green')).upper()
             if validate_key(row_choice_letter, keys_player_guess_row):
@@ -152,8 +155,6 @@ def launch_game():
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n', 'green'))
         compare_coordinates(board)
         misiles += 1
-        misiles_left = 15 - misiles
-        print(colored(f'{misiles_left} misiles left \n', 'green'))
         print("\n")
         print(colored("Launch next misile--> L", 'green'))
         print(colored("Quit Game--> Q", 'green'))
