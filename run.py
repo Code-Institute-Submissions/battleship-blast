@@ -260,6 +260,8 @@ def game_over():
     """
     print(colored('******************************************************************************** \n', 'green'))
     print(colored("G A M E    O V E R", 'green'))
+    print(colored("To play again, click on RUN PROGRAM", 'green'))
+
 
 # VALIDATING FUNCTIONS--------------------------
 def validate_key(data, valid_keys):
