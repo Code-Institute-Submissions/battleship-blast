@@ -94,13 +94,13 @@ def grid(board):
     """
     Function that prints board onto the terminal
     """
-    print("    1   2   3   4   5")
-    print("  _____________________")
+    print(colored("    1   2   3   4   5", 'green'))
+    print(colored("  _____________________", 'green'))
     row_letter = 0
     for row in board:
-        print((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"))
+        print(colored((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"), 'green'))
         row_letter += 1
-    print("  _____________________")
+    print(colored("  _____________________", 'green'))
 
 def place_random_ships():
     """
@@ -128,7 +128,7 @@ def launch_game():
     global hits
     ships_sunk = 0
     hits = 0
-    misiles = 1
+    misiles = 0
     place_random_ships()
     while misiles <= 15:
         if ships_sunk == 5:
@@ -137,7 +137,6 @@ def launch_game():
         print(colored("T H E    B A T T L E F I E L D \n", 'green'))
         print("\n")
         grid(board)
-        print(enemy_ship_coordinates)
         print("\n")
         while True:
             row_choice_letter = input(colored("Enter row: \n", 'green')).upper()
@@ -154,6 +153,8 @@ def launch_game():
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n', 'green'))
         compare_coordinates(board)
         misiles += 1
+        misiles_left = 15 - misiles 
+        print(colored(f'{misiles_left} misiles left \n', 'green'))
         print("\n")
 
         print(colored("Launch next misile--> L", 'green'))
