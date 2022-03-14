@@ -5,20 +5,8 @@ import sys
 import random
 from termcolor import colored
 
-
-# GLOBAL VARIABLES ------------------------------
-keys_123 = "1 2 3"
-keys_m = "M"
-# IMPORTS ---------------------------------------
-import os
-import sys
-
-import random
-from termcolor import colored
-
-
 # VARIABLES ------------------------------
-keys_123 = ["1", "2", "3"]
+keys_123 = [1, 2, 3]
 keys_m = "M"
 keys_launch_menu_quit = ["L", "Q"]
 yes_no_keys = ["Y", "N"]
@@ -60,14 +48,14 @@ def game_menu():
         print(colored("Launch game--> 2", 'green'))
         print(colored("Exit --> 3", 'green'))
         menu_selection = input('\n')
-        if validate_key(menu_selection, keys_123):
+        if validate_key_numerical(menu_selection, keys_123):
             break
-    if menu_selection == "1":
+    if menu_selection == 1:
         game_instructions()
-    elif menu_selection == "2":
+    elif menu_selection == 2:
         grid_choice()
         #launch_game()
-    elif menu_selection == "3":
+    elif menu_selection == 3:
         exit_game()
 
 def game_instructions():
@@ -90,7 +78,7 @@ def game_instructions():
         print(colored("• Bottom right: (E, 4)\n", 'green'))
         print(colored("Go back to menu--> M", 'green'))
         menu_selection = input('\n').upper()
-        if validate_key(menu_selection, keys_m):
+        if validate_key_alpha(menu_selection, keys_m):
             break
     if menu_selection == "M":
         game_menu()
@@ -110,7 +98,7 @@ def grid_choice():
     while True:
         global grid_size
         grid_size = int(input('\n'))
-        if validate_key(grid_size, keys_grid):
+        if validate_key_numerical(grid_size, keys_grid):
             break
 
     global keys_player_guess_row
@@ -199,11 +187,11 @@ def launch_game():
 
         while True:
             row_choice_letter = input(colored("Enter row: \n", 'green')).upper()
-            if validate_key(row_choice_letter, keys_player_guess_row):
+            if validate_key_alpha(row_choice_letter, keys_player_guess_row):
                 break
         while True:
             column_choice_number = int(input(colored("Enter column: \n", 'green')))
-            if validate_key(column_choice_number, keys_player_guess_column):
+            if validate_key_numerical(column_choice_number, keys_player_guess_column):
                 break
         row_choice = letters_to_numbers[row_choice_letter]
         column_choice = column_choice_number - 1
@@ -219,7 +207,7 @@ def launch_game():
 
         while True:
             exit_option = input('\n').upper()
-            if validate_key(exit_option, keys_launch_menu_quit):
+            if validate_key_alpha(exit_option, keys_launch_menu_quit):
                 break
         if exit_option == "Q":
             break
@@ -284,7 +272,7 @@ def end_score():
     print(colored("No--> N", 'green'))
     while True:
         exit_option = input(colored('\n', 'green')).upper()
-        if validate_key(exit_option, yes_no_keys):
+        if validate_key_alpha(exit_option, yes_no_keys):
             break
     if exit_option == "N":
         game_over()
@@ -304,7 +292,7 @@ def exit_game():
         print(colored("Yes, quit now--> Y", 'green'))
         print(colored("No--> N", 'green'))
         exit_choice = input('\n').upper()
-        if validate_key(exit_choice, yes_no_keys):
+        if validate_key_alpha(exit_choice, yes_no_keys):
             break
     if exit_choice == "Y":
         game_over()
@@ -320,7 +308,7 @@ def game_over():
     print(colored("To play again, click on RUN PROGRAM", 'green'))
 
 # VALIDATING FUNCTIONS--------------------------
-def validate_key(data, valid_keys):
+def validate_key_alpha(data, valid_keys):
     """
     Function that validates data.
     """
@@ -328,6 +316,24 @@ def validate_key(data, valid_keys):
         if data not in valid_keys:
             raise ValueError(
                 f"Input--> {data}. Only {valid_keys} are valid inputs."
+            )
+        elif (data.isalpha()) is False:
+            raise ValueError(
+                f'You entered {data} which is not an alphabetical string.'
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}")
+        return False
+    return True
+
+def validate_key_numerical(data, valid_keys):
+    """
+    Function that validates data.
+    """
+    try:
+        if (data.isalpha()) is True:
+            raise ValueError(
+                f'You entered {data} which is not an integer.'
             )
     except ValueError as e:
         print(f"Invalid data: {e}")
@@ -341,7 +347,7 @@ def validate_player_name(data):
     try:
         if (data.isalpha()) is False:
             raise ValueError(
-                f'You entered {data} which is not an alphabetical string,'
+                f'You entered {data} which is not an alphabetical string.'
             )
     except ValueError as e:
         print(f"Invalid data: {e}")
