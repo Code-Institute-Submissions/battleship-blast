@@ -6,11 +6,11 @@ import random
 from termcolor import colored
 
 # VARIABLES ------------------------------
-keys_123 = [1, 2, 3]
+keys_123 = ["1", "2", "3"]
 keys_m = "M"
 keys_launch_menu_quit = ["L", "Q"]
 yes_no_keys = ["Y", "N"]
-keys_grid = [5, 8, 12]
+keys_grid = ["5", "8", "12"]
 
 ships_sunk = 0
 hits = 0
@@ -50,12 +50,12 @@ def game_menu():
         menu_selection = input('\n')
         if validate_key_numerical(menu_selection, keys_123):
             break
-    if menu_selection == 1:
+    if menu_selection == "1":
         game_instructions()
-    elif menu_selection == 2:
+    elif menu_selection == "2":
         grid_choice()
         #launch_game()
-    elif menu_selection == 3:
+    elif menu_selection == "3":
         exit_game()
 
 def game_instructions():
@@ -97,16 +97,17 @@ def grid_choice():
     print(colored("12 x 12 --> 12", 'green'))
     while True:
         global grid_size
-        grid_size = int(input('\n'))
+        grid_size = input('\n')
         if validate_key_numerical(grid_size, keys_grid):
+            grid_size = int(grid_size)
             break
 
     global keys_player_guess_row
     global keys_player_guess_column
 
     keys_player_guess_column = []
-    for i in range(1,grid_size+1):
-        keys_player_guess_column.append(i)
+    for i in range(1,grid_size + 1):
+        keys_player_guess_column.append(str(i))
 
     keys_player_guess_row = []
     for i in range(65, 65 + grid_size):
@@ -190,8 +191,9 @@ def launch_game():
             if validate_key_alpha(row_choice_letter, keys_player_guess_row):
                 break
         while True:
-            column_choice_number = int(input(colored("Enter column: \n", 'green')))
+            column_choice_number = input(colored("Enter column: \n", 'green'))
             if validate_key_numerical(column_choice_number, keys_player_guess_column):
+                column_choice_number = int(column_choice_number)
                 break
         row_choice = letters_to_numbers[row_choice_letter]
         column_choice = column_choice_number - 1
@@ -331,9 +333,13 @@ def validate_key_numerical(data, valid_keys):
     Function that validates data.
     """
     try:
-        if (data.isalpha()) is True:
+        if data.isdigit() is not True:
             raise ValueError(
                 f'You entered {data} which is not an integer.'
+            )
+        elif data not in valid_keys:
+            raise ValueError(
+                f"Input--> {data}. Only {valid_keys} are valid inputs."
             )
     except ValueError as e:
         print(f"Invalid data: {e}")
