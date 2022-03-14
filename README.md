@@ -77,8 +77,8 @@ STRUCTURE:
 
 #### _Header - Game Title_
 
-*   The Game title is displayed as soon as the game is launched. Minimalist uppercase green font.
-*   Playe name is requested, which will be used thoughout the game.
+*   The Game title is displayed as soon as the game is launched. Minimalist uppercase green font: B A T T L E F I E L D S
+*   Player name is requested, which will be used thoughout the game.
 
 <img src="assets/images/header.png" width="500px">
 
@@ -89,7 +89,7 @@ STRUCTURE:
 
 * * *
 
-The initial menu section is simple, to the point and consists of 3 navigation options:
+The initial M E N U section is simple, to the point and consists of 3 navigation options:
 
 * 1 : Game Instructions
 * 2 : Launch Game
@@ -106,16 +106,17 @@ The initial menu section is simple, to the point and consists of 3 navigation op
 
 When typing 1 into the terminal, the user is directed to this page consisting of game instructions.
 
-* Ths contains a header labelled GAME INSTRUCTIONS. All section headers are displayed in a similar style (uppercase, gaps in between letters)
+* Ths contains a header labelled I N S T R U C T I O N S. All section headers are displayed in a similar style (uppercase, gaps in between letters)
 * The instructions which are:
     * Clear and consise
     * Arranged in bullet points
     * Separated into relevant sections.
-*The user must type M to return to the MENU.
+*The user must type M to return to the M E N U.
 
 <img src="assets/images/mobile-round1-display.png" width="200px">
 
-* * *
+* * * 
+
 
 ### Exit Game
 
@@ -138,11 +139,27 @@ From MENU, when typing 3 into the terminal, the user is directed to the EXIT GAM
 
 * * *
 
-From EXIT GAME, when typing Y into the terminal, the user is directed to the GAME OVER SECTION
+From Q U I T  G A M E, when typing Y into the terminal, the user is directed to the G A M E  O V E R section
 
-This section simply displays the words GAME OVER.
+This section simply displays the words G A M E  O V E R.
 
 <img src="assets/images/mobile-gameover-display.png" width="200px">
+
+
+### Grid Choice 
+
+* * *
+
+From MENU, when typing 2 into the terminal, player is navigated to Grid choice section
+
+* 5 x 5 --> 5
+* 8 x 8 --> 8
+* 12 x 12 --> 12
+* Enter user selection.
+
+
+<img src="assets/images/mobile-launch-display.png" width="200px">
+
 
 * * *
 
@@ -150,13 +167,13 @@ This section simply displays the words GAME OVER.
 
 * * *
 
-From MENU, when typing 3 into the terminal, the user is finally directed to the GAME section.
+From grid selection, the user is finally directed to the GAME section.
 This displays:
-* Header labelled THE BATTLEFIELD
+* Header labelled T H E  B A T T L E F I E L D
 * The board grid:
-    * 5 x 5
-    * Rows: A B C D E
-    * Columns: 1 2 3 4 5
+    * 5 x 5, 8 x 8 or 12 x 12
+    * Rows: A B C D E ...
+    * Columns: A B C D E ...
     * Each cooridnate is represented by a .
 * Enter ROW input
 * Enter COLUMN input
@@ -167,12 +184,12 @@ Once the user inputs both coordinates, the following options:
     * You sunk a ship!
     * You missed!
     * You've already hit this target, Try again!!
-* Selection    
-    * Launch next misile - L
-    * Quit Game - Q (And a reminder, that if quiting, all advances will be lost)
+* Selection: Launch next misile?    
+    * Y - yes --> next round
+    * N - No (And a reminder, that if quiting, all advances will be lost)
 
 
-If selecting Q, the user is directed to EXIT GAME section.
+If selecting N, the user is directed to EXIT GAME section.
 
 * * *
 
@@ -286,7 +303,7 @@ FEATURES:
  <img src="assets/images/tablet-playround-display.png" width="500px"> 
 
 * QUIT GAME - when entering 3 from MENU
-    * Header: Q U I T   G A M E 
+    * Header: Q U I T  G A M E 
     * Message confirming if user wnats to exit game. Language is challenging the user.
     * Question player. Quit game?
         * If Y - GAME OVER
@@ -299,11 +316,22 @@ FEATURES:
 
 <img src="assets/images/tablet-gameover-display.png" width="500px"> 
 
-* LAUNCH GAME ROUND - when entering 2 from MENU
+* GRID SELECTION - when entering 2 from MENU
+    * Message displaying G R I D  S I Z E
+    * Options to select from:
+        * 5 x 5 (easy)
+        * 8 x 8 (medium)
+        * 12 x 12 (hard)
+    * Input request (validated before submitting)
+
+<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+
+* LAUNCH GAME ROUND - after selecting grid size
     * Header: B A T T L E F I E L D
     * Battlefield Grid:
-        * Rows: A B C D E
-        * Columns: 1 2 3 4 5
+        * Rows: A B C D E ...
+        * Columns: A B C D E ...
     * Input request: Enter row (validated before submitting)
     * Input request: Enter column (validated before submitting)
 
@@ -311,9 +339,9 @@ FEATURES:
 
 * AFTER SUBMITTING COORDINATES - results added!
     * Message confirming hit, miss, or repeated coordinate.
-    * Options to:
-        * Launch next misile - L
-        * Quit game - Q
+    * Options, launch next misile?
+        * Y - yes (validated before submitting)
+        * N - no (validated before submitting)
     * Request player input (validated before submitting)
 
 <img src="assets/images/tablet-gameover-display.png" width="500px"> 
@@ -342,8 +370,8 @@ FEATURES:
 
 ### Future features
 
-* Include a player grid with the player randomly selected ships.
-* Allow player to select where to place their ships
+* Have 2 grids: one for the player to have their ships.
+* Allow player to select where to place their ships,
 * Longer ships ocupying more coordinates.
 
 * * * 

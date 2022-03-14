@@ -27,7 +27,7 @@ def launch_intro():
     """
     while True:
         print(colored('****************************************************************************************** \n', 'green'))
-        print(colored("B A T T L E S H I P   B L A S T \n", 'green'))
+        print(colored("B A T T L E S H I P S\n", 'green'))
         global player_name
         player_name = input(colored("Enter player name: \n", 'green')).title()
 
@@ -41,7 +41,7 @@ def game_menu():
     """
     while True:
         print(colored('****************************************************************************************** \n', 'green'))
-        print(colored("G A M E    M E N U \n", 'green'))
+        print(colored("G A M E   M E N U \n", 'green'))
         print(colored("War is imminent....", 'green'))
         print(colored(f'{player_name}, prepare for battle! \n', 'green'))
         print(colored("Instructions--> 1", 'green'))
@@ -54,7 +54,6 @@ def game_menu():
         game_instructions()
     elif menu_selection == "2":
         grid_choice()
-        #launch_game()
     elif menu_selection == "3":
         exit_game()
 
@@ -64,18 +63,22 @@ def game_instructions():
     """
     while True:
         print(colored('******************************************************************************** \n', 'green'))
-        print(colored("G A M E  I N S T R U C T I O N S \n", 'green'))
-        print(colored("• Battlefield display: 5 x 5.", 'green'))
+        print(colored("I N S T R U C T I O N S \n", 'green'))
+        print(colored("• Battlefield grid choices:", 'green'))
+        print(colored("   Easy - 5 x 5", 'green'))
+        print(colored("   Hard - 8 x 8", 'green'))
+        print(colored("   Brutal - 12 x 12", 'green'))
+
         print(colored("• There here are 5 hidden battleships.\n", 'green'))
-        print(colored("• Rows : A, B, C, D, E", 'green'))
-        print(colored("• Columns: 1, 2, 3, 4, 5", 'green'))
+        print(colored("• Rows : A, B, C, D, E, ...", 'green'))
+        print(colored("• Columns: A, B, C, D, E, ...", 'green'))
         print(colored("• Each ship takes up one coordinate", 'green'))
-        print(colored("• For example: (A, 1)\n", 'green'))
+        print(colored("• For example: (A, C)\n", 'green'))
         print(colored("• Enter coordinates to launch missil. \n", 'green'))
         print(colored("• You have a total of 15 missils.", 'green'))
         print(colored("• Sink ALL ships to win the game. \n", 'green'))
-        print(colored("• Top left: (A, 1)", 'green'))
-        print(colored("• Bottom right: (E, 4)\n", 'green'))
+        print(colored("• Top left: (A, A)", 'green'))
+        print(colored("• Bottom right: (E, E), (H, H) or (L, L)\n", 'green'))
         print(colored("Go back to menu--> M", 'green'))
         menu_selection = input('\n').upper()
         if validate_key_alpha(menu_selection, keys_m):
@@ -89,7 +92,7 @@ def grid_choice():
     Function to select grid size.
     """
     print(colored('******************************************************************************** \n', 'green'))
-    print(colored("G R I D  S I Z E", 'green'))
+    print(colored("G R I D  S E L E C T I O N", 'green'))
     print("\n")
     print(colored("Please select grid size", 'green'))
     print(colored("5 x 5 --> 5", 'green'))
@@ -102,17 +105,18 @@ def grid_choice():
             grid_size = int(grid_size)
             break
 
-    global keys_player_guess_row
-    global keys_player_guess_column
-
-    keys_player_guess_column = []
-    for i in range(1,grid_size + 1):
-        keys_player_guess_column.append(str(i))
-
-    keys_player_guess_row = []
+    global keys_guess_row
+    global keys_guess_col
+    
+    keys_guess_row = []
     for i in range(65, 65 + grid_size):
-        keys_player_guess_row.append(chr(i))
- 
+        keys_guess_row.append(chr(i))
+
+
+    keys_guess_col = []
+    for i in range(65, 65 + grid_size):
+        keys_guess_col.append(chr(i))
+
     global board
     board = []
     for x in range(grid_size):
@@ -170,7 +174,7 @@ def launch_game():
         if ships_sunk == 5:
             break
         print(colored('******************************************************************************** \n', 'green'))
-        print(colored("T H E    B A T T L E F I E L D \n", 'green'))
+        print(colored("T H E   B A T T L E F I E L D \n", 'green'))
         print("\n")
         grid(board)
         print("\n")
@@ -178,18 +182,17 @@ def launch_game():
         print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
         while True:
             row_choice_letter = input(colored("Enter row: \n", 'green')).upper()
-            if validate_key_alpha(row_choice_letter, keys_player_guess_row):
+            if validate_key_alpha(row_choice_letter, keys_guess_row):
                 break
         while True:
-            column_choice_number = input(colored("Enter column: \n", 'green'))
-            if validate_key_numerical(column_choice_number, keys_player_guess_column):
-                column_choice_number = int(column_choice_number)
+            column_choice_letter = input(colored("Enter column: \n", 'green')).upper()
+            if validate_key_alpha(column_choice_letter, keys_guess_col):
                 break
         row_choice = letters_to_numbers[row_choice_letter]
-        column_choice = column_choice_number - 1
+        column_choice = letters_to_numbers[column_choice_letter]
         global player_guess
         player_guess = row_choice, column_choice
-        print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n', 'green'))
+        print(colored(f'You guessed ({row_choice_letter}, {column_choice_letter}) \n', 'green'))
         compare_coordinates(board)
         misiles += 1
         print("\n")     
@@ -296,6 +299,7 @@ def game_over():
     """
     print(colored('******************************************************************************** \n', 'green'))
     print(colored("G A M E    O V E R", 'green'))
+    print("\n")
     print(colored("To play again, click on RUN PROGRAM", 'green'))
 
 # VALIDATING FUNCTIONS--------------------------
