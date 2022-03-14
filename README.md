@@ -233,6 +233,7 @@ Prior to commencing to write my code out, I planned out the functions required.
 * Before starting, I created the wireframes displayed above. I knew I wanted the game to be minimal, retro 80's PC style.
 
 <img src="./assets/images/wireframes-visual.png" width="800px">
+<img src="./assets/images/wireframe-grid-size.png" width="260px">
 
 * * *
 
@@ -257,15 +258,16 @@ Using the standard console typography: but played around with a few things
 * Use of "************" for page break and separation
 
 
-<img src="assets/images/shadowsintolight-font.png" width="600px">
+<img src="assets/images/spaces-letters-font.png" width="500px">
 
 ### Images and Icons
 
 * * *
-<img src="assets/images/rock-paper-scissors.jpg" width="600px">
 
 No use of image or icons.
-Everything was built using letters, numbers, typographical symbols and punctuation.
+Everything was built using letters, numbers, typographical symbols and punctuation to create the grid.
+
+<img src="assets/images/grid.png" width="500px">
 
 * * * 
 

@@ -88,13 +88,13 @@ def game_instructions():
 
 # GAME ROUND FUNCTIONS--------------------------
 def grid_choice():
-    """ 
+    """
     Function to select grid size.
     """
     print(colored('******************************************************************************** \n', 'green'))
     print(colored("G R I D  S E L E C T I O N", 'green'))
     print("\n")
-    print(colored("Please select grid size", 'green'))
+    print(colored("Please select grid size:", 'green'))
     print(colored("5 x 5 --> 5", 'green'))
     print(colored("8 x 8 --> 8", 'green'))
     print(colored("12 x 12 --> 12", 'green'))
@@ -107,7 +107,7 @@ def grid_choice():
 
     global keys_guess_row
     global keys_guess_col
-    
+
     keys_guess_row = []
     for i in range(65, 65 + grid_size):
         keys_guess_row.append(chr(i))
@@ -140,7 +140,7 @@ def grid(board):
         print(colored((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"), 'green'))
         row_letter += 1
     print(colored('  _'+"".join(line), 'green'))
-    
+
 def place_random_ships():
     """
     Function that generated 5 random unique coordinates.
@@ -195,7 +195,7 @@ def launch_game():
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_letter}) \n', 'green'))
         compare_coordinates(board)
         misiles += 1
-        print("\n")     
+        print("\n")
         print(colored("Launch next misile?", 'green'))
         print(colored("Y or N?", 'green'))
         print(colored("If N, all advances will be lost.", 'green'))
@@ -357,6 +357,3 @@ if len(sys.argv) == 1:
     launch_intro()
 
 game_menu()
-
-
-
