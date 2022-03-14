@@ -123,29 +123,20 @@ def grid(board):
     """
     Function that prints board onto the terminal
     """
-    if grid_size == 5:
-        print(colored("    1   2   3   4   5", 'green'))
-        print(colored("  _____________________", 'green'))
-
-    elif grid_size == 8:
-        print(colored("    1   2   3   4   5   6   7   8", 'green'))
-        print(colored("  __________________________________", 'green'))
-
-    elif grid_size == 12:
-        print(colored("    1   2   3   4   5   6   7   8   9  10  11  12", 'green'))
-        print(colored("  _________________________________________________", 'green'))
-
+    column_names=""
+    for i in range(65, 65 + int(grid_size)):
+        column_names += str(chr(i))
+    print(colored('    ' + '   '.join(column_names) + '  ', 'green'))
+    line = []
+    for i in range(int(grid_size)):
+        line.append("____")
+    print(colored('  _'+"".join(line), 'green'))
     row_letter = 0
     for row in board:
         print(colored((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"), 'green'))
         row_letter += 1
-    if grid_size == 5:
-        print(colored("  _____________________", 'green'))
-    elif grid_size == 8:
-        print(colored("  __________________________________", 'green'))
-    elif grid_size == 12:
-        print(colored("  _________________________________________________", 'green'))
-
+    print(colored('  _'+"".join(line), 'green'))
+    
 def place_random_ships():
     """
     Function that generated 5 random unique coordinates.
@@ -185,7 +176,6 @@ def launch_game():
         print("\n")
         misiles_left = 15 - misiles
         print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
-
         while True:
             row_choice_letter = input(colored("Enter row: \n", 'green')).upper()
             if validate_key_alpha(row_choice_letter, keys_player_guess_row):
@@ -202,18 +192,17 @@ def launch_game():
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n', 'green'))
         compare_coordinates(board)
         misiles += 1
-        print("\n")
-        print(colored("Launch next misile--> L", 'green'))
-        print(colored("Quit Game--> Q", 'green'))
-        print(colored("If Q, all advances will be lost.", 'green'))
-
+        print("\n")     
+        print(colored("Launch next misile?", 'green'))
+        print(colored("Y or N?", 'green'))
+        print(colored("If N, all advances will be lost.", 'green'))
         while True:
             exit_option = input('\n').upper()
-            if validate_key_alpha(exit_option, keys_launch_menu_quit):
+            if validate_key_alpha(exit_option, yes_no_keys):
                 break
-        if exit_option == "Q":
+        if exit_option == "N":
             break
-        elif exit_option == "L":
+        elif exit_option == "Y":
             pass
     end_score()
 
