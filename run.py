@@ -9,15 +9,25 @@ from termcolor import colored
 # GLOBAL VARIABLES ------------------------------
 keys_123 = "1 2 3"
 keys_m = "M"
-keys_player_guess_row = "A B C D E "
-keys_player_guess_column = "1 2 3 4 5"
-keys_launch_menu_quit = "L Q"
-yes_no_keys = "Y N"
+# IMPORTS ---------------------------------------
+import os
+import sys
+
+import random
+from termcolor import colored
+
+
+# VARIABLES ------------------------------
+keys_123 = ["1", "2", "3"]
+keys_m = "M"
+keys_launch_menu_quit = ["L", "Q"]
+yes_no_keys = ["Y", "N"]
+keys_grid = [5, 8, 12]
 
 ships_sunk = 0
 hits = 0
 
-letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4}
+letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9, 'K': 10, 'L': 11, 'M': 12}
 
 if len(sys.argv) > 1:
     player_name = sys.argv[1]
@@ -55,7 +65,8 @@ def game_menu():
     if menu_selection == "1":
         game_instructions()
     elif menu_selection == "2":
-        launch_game()
+        grid_choice()
+        #launch_game()
     elif menu_selection == "3":
         exit_game()
 
@@ -85,21 +96,66 @@ def game_instructions():
         game_menu()
 
 # GAME ROUND FUNCTIONS--------------------------
-board = []
-for x in range(5):
-    board.append([" . "]*5)
+def grid_choice():
+    """ 
+    Function to select grid size.
+    """
+    print(colored('******************************************************************************** \n', 'green'))
+    print(colored("G R I D  S I Z E", 'green'))
+    print("\n")
+    print(colored("Please select grid size", 'green'))
+    print(colored("5 x 5 --> 5", 'green'))
+    print(colored("8 x 8 --> 8", 'green'))
+    print(colored("12 x 12 --> 12", 'green'))
+    while True:
+        global grid_size
+        grid_size = int(input('\n'))
+        if validate_key(grid_size, keys_grid):
+            break
+
+    global keys_player_guess_row
+    global keys_player_guess_column
+
+    keys_player_guess_column = []
+    for i in range(1,grid_size+1):
+        keys_player_guess_column.append(i)
+
+    keys_player_guess_row = []
+    for i in range(65, 65 + grid_size):
+        keys_player_guess_row.append(chr(i))
+ 
+    global board
+    board = []
+    for x in range(grid_size):
+        board.append([" . "] * grid_size)
+    launch_game()
 
 def grid(board):
     """
     Function that prints board onto the terminal
     """
-    print(colored("    1   2   3   4   5", 'green'))
-    print(colored("  _____________________", 'green'))
+    if grid_size == 5:
+        print(colored("    1   2   3   4   5", 'green'))
+        print(colored("  _____________________", 'green'))
+
+    elif grid_size == 8:
+        print(colored("    1   2   3   4   5   6   7   8", 'green'))
+        print(colored("  __________________________________", 'green'))
+
+    elif grid_size == 12:
+        print(colored("    1   2   3   4   5   6   7   8   9  10  11  12", 'green'))
+        print(colored("  _________________________________________________", 'green'))
+
     row_letter = 0
     for row in board:
         print(colored((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"), 'green'))
         row_letter += 1
-    print(colored("  _____________________", 'green'))
+    if grid_size == 5:
+        print(colored("  _____________________", 'green'))
+    elif grid_size == 8:
+        print(colored("  __________________________________", 'green'))
+    elif grid_size == 12:
+        print(colored("  _________________________________________________", 'green'))
 
 def place_random_ships():
     """
@@ -108,9 +164,9 @@ def place_random_ships():
     """
     global enemy_ship_coordinates
     enemy_ship_coordinates = []
-    while len(enemy_ship_coordinates) < 5:
-        ship_row = random.randint(0, 4)
-        ship_column = random.randint(0, 4)
+    while len(enemy_ship_coordinates) < int(grid_size):
+        ship_row = random.randint(0, int(grid_size)-1)
+        ship_column = random.randint(0, int(grid_size)-1)
         coordinate = ship_row, ship_column
         if coordinate not in enemy_ship_coordinates:
             enemy_ship_coordinates.append(tuple(coordinate))
@@ -129,6 +185,7 @@ def launch_game():
     hits = 0
     misiles = 0
     place_random_ships()
+    print(enemy_ship_coordinates)
     while misiles <= 14:
         if ships_sunk == 5:
             break
@@ -145,11 +202,11 @@ def launch_game():
             if validate_key(row_choice_letter, keys_player_guess_row):
                 break
         while True:
-            column_choice_number = input(colored("Enter column: \n", 'green')).upper()
+            column_choice_number = int(input(colored("Enter column: \n", 'green')))
             if validate_key(column_choice_number, keys_player_guess_column):
                 break
         row_choice = letters_to_numbers[row_choice_letter]
-        column_choice = int(column_choice_number) - 1
+        column_choice = column_choice_number - 1
         global player_guess
         player_guess = row_choice, column_choice
         print(colored(f'You guessed ({row_choice_letter}, {column_choice_number}) \n', 'green'))
@@ -262,18 +319,13 @@ def game_over():
     print(colored("G A M E    O V E R", 'green'))
     print(colored("To play again, click on RUN PROGRAM", 'green'))
 
-
 # VALIDATING FUNCTIONS--------------------------
 def validate_key(data, valid_keys):
     """
     Function that validates data.
     """
     try:
-        if len(str(data)) != 1:
-            raise ValueError(
-                f'String length--> {len(data)}. Type one value only.'
-            )
-        elif data not in valid_keys:
+        if data not in valid_keys:
             raise ValueError(
                 f"Input--> {data}. Only {valid_keys} are valid inputs."
             )
@@ -300,3 +352,6 @@ if len(sys.argv) == 1:
     launch_intro()
 
 game_menu()
+
+
+

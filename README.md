@@ -397,28 +397,7 @@ Warnings:
 
 <img src="assets/images/html-validator.png" width="800px">
 
-
-#### [CSS Validator- Jigsaw](https://jigsaw.w3.org/css-validator/)
-Tested and no errors found.
-
-<img src="assets/images/css-validator.png" width="800px">
-
-#### [JAVASCRIPT Validator- JSHint](https://jshint.com/)
-Tested and a few errors were found.
-
-<img src="assets/images/js-validator.png" width="800px">
-
-Most of these were due to having not put "let" before. Once these bugs were fixed...
-
-<img src="assets/images/js-validator-2.png" width="800px">
-
-The remaining bug is simply due to the function not being called on js page, however it is used in the HTML code.
-
-<img src="assets/images/body-launch-game-html.png" width="800px">
-
-During this testing I did notice a big problem with the end result! This is explained in the BUGS & FIXES SECTION further below. 
-
-
+* * *
 
 #### Manual testing 
 
