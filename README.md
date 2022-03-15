@@ -96,7 +96,7 @@ The initial M E N U section is simple, to the point and consists of 3 navigation
 * 3 : Exit Game
 
 
-<img src="assets/images/mobile-launch-display.png" width="200px">
+<img src="assets/images/menu.png" width="500px">
 
 * * * 
   
@@ -113,7 +113,7 @@ When typing 1 into the terminal, the user is directed to this page consisting of
     * Separated into relevant sections.
 *The user must type M to return to the M E N U.
 
-<img src="assets/images/mobile-round1-display.png" width="200px">
+<img src="assets/images/instructions.png" width="500px">
 
 * * * 
 
@@ -131,7 +131,7 @@ From MENU, when typing 3 into the terminal, the user is directed to the EXIT GAM
     * N to play game : which directs the user back to MENU
 
 
-<img src="assets/images/mobile-playround-display.png" width="200px">
+<img src="assets/images/exit1.png" width="500px">
   
 * * * 
 
@@ -143,7 +143,7 @@ From Q U I T  G A M E, when typing Y into the terminal, the user is directed to 
 
 This section simply displays the words G A M E  O V E R.
 
-<img src="assets/images/mobile-gameover-display.png" width="200px">
+<img src="assets/images/gameover.png" width="500px">
 
 
 ### Grid Choice 
@@ -158,7 +158,7 @@ From MENU, when typing 2 into the terminal, player is navigated to Grid choice s
 * Enter user selection.
 
 
-<img src="assets/images/mobile-launch-display.png" width="200px">
+<img src="assets/images/grid-selection.png" width="500px">
 
 
 * * *
@@ -178,6 +178,7 @@ This displays:
 * Enter ROW input
 * Enter COLUMN input
 
+<img src="assets/images/round-1.png" width="500px">
 
 Once the user inputs both coordinates, the following options:
 * Result: 
@@ -187,6 +188,8 @@ Once the user inputs both coordinates, the following options:
 * Selection: Launch next misile?    
     * Y - yes --> next round
     * N - No (And a reminder, that if quiting, all advances will be lost)
+
+<img src="assets/images/round-2.png" width="500px">
 
 
 If selecting N, the user is directed to EXIT GAME section.
@@ -202,7 +205,7 @@ The coordinate previously selected will have:
 * "-" - miss
 
 
-<img src="assets/images/mobile-gameover-display.png" width="200px">
+<img src="assets/images/round-3.png" width="500px">
 
 
 
@@ -280,9 +283,13 @@ FEATURES:
 
 *   INTRODUCTION: This is the page that initially loads when you first arrive to the site. 
     * Header: "B A T T L E F I E L D S"
-    * Player name input form (required, and validated before submitting)
+    * Player name input form (required, and validated before submitting):
+        This name is stored as a variable and used a number of times throughout the game. These personalised messages create a sense of familiarity with the user.
 
-  <img src="assets/images/tablet-launch-display.png" width="500px"> 
+
+  <img src="assets/images/name-1.png" width="500px"> 
+  <img src="assets/images/name-2.png" width="500px"> 
+
 
 *   MENU: which loads once the user has input player name and it has been validated. The form takes the players name and uses it below.
     * Header: M E N U
@@ -291,18 +298,23 @@ FEATURES:
         * Instructions - 1
         * Launch game - 2
         * Exit game - 3
-    * Play input request: request is validated before redirecting.
+    * Play input request: loops user input request until validated. I created a validating function to anticipate any errors the user may input:
+        * Must be in a predetermined list with vaues: 1, 2, 3
+        * Must be a digit
+    
 
- <img src="assets/images/tablet-round1-display.png" width="500px"> 
+ <img src="assets/images/error.png" width="500px"> 
 
 *   INSTRUCTIONS - when entering 1
     * Header: I N S T R U C T I O N S 
     * Listed game instructions in bullet points
     * Separated by spaces to make rules clearer.
     * Instruction to enter M - go back to menu
-    * Player input request. (Validated before redirecting)
+    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
+        * Must be 1 digit
+        * Must be M only
 
- <img src="assets/images/tablet-playround-display.png" width="500px"> 
+ <img src="assets/images/error-2.png" width="500px"> 
 
 * QUIT GAME - when entering 3 from MENU
     * Header: Q U I T  G A M E 
@@ -310,13 +322,18 @@ FEATURES:
     * Question player. Quit game?
         * If Y - GAME OVER
         * If N - back to MENU
+    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
+        * Must be alphabetical
+        * Must be in predetermined list with values: Y, N
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+ <img src="assets/images/error-3.png" width="500px"> 
+
 
 * GAME OVER - when entering Y from QUIT GAME
     * Message displaying G A M E  O V E R
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+ <img src="assets/images/gameover.png" width="500px"> 
+
 
 * GRID SELECTION - when entering 2 from MENU
     * Message displaying G R I D  S I Z E
@@ -324,9 +341,11 @@ FEATURES:
         * 5 x 5 (easy)
         * 8 x 8 (medium)
         * 12 x 12 (hard)
-    * Input request (validated before submitting)
+    * Input request (validated before submitting). This looped request until validation anticipates the following possible errors:
+        * Must be in a predetermined list with vaues: 5, 8, 12
+        * Must be a digit
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+<img src="assets/images/error-4.png" width="500px"> 
 
 
 * LAUNCH GAME ROUND - after selecting grid size
@@ -336,25 +355,32 @@ FEATURES:
         * Columns: A B C D E ...
     * Input request: Enter row (validated before submitting)
     * Input request: Enter column (validated before submitting)
+    Both cases, request is looped until validation anticipates the following possible errors:
+        * Must be alphabetical
+        * Must be in predetermined list with values determined by for loop with range(grid_size) which creates an alphabetical list to cover this range.
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+<img src="assets/images/error-5.png" width="500px"> 
 
 * AFTER SUBMITTING COORDINATES - results added!
     * Message confirming hit, miss, or repeated coordinate.
     * Options, launch next misile?
         * Y - yes (validated before submitting)
         * N - no (validated before submitting)
-    * Request player input (validated before submitting)
+    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
+        * Must be alphabetical
+        * Must be in predetermined list with values: Y, N
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+
+<img src="assets/images/error-6.png" width="500px"> 
 
 
 * 2nd ROUND ONWARDS...
     * Exactly the same as before but adding:
-        * Misils left
+        * Misils left! with each round that loops, the function addss 1 missil, and subtracts that value from the total misiles at the start.
         * X (sunk) or - (missed) on grid where player has previously hit.
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+<img src="assets/images/round-3.png" width="500px"> 
+    
 
 * END SCORE (Either after completing 15 rounds, or having sunk all ships)
     * Header: G A M E  O V E R 
@@ -365,7 +391,7 @@ FEATURES:
         * Y - yes (validated before submitting)
         * N - no (validated before submitting)
 
-<img src="assets/images/tablet-gameover-display.png" width="500px"> 
+<img src="assets/images/final-score.png" width="500px"> 
 
 
 * * * 
@@ -435,7 +461,7 @@ Warnings:
 
 
 * Initial page loads properly.
-* Player name form is loaded properly and the text input is required to submit the form and play the game. 
+* Player name input is loaded properly and the valid input is required to move forward. 
 * handlePlayerName() function works correctly, and takes the player name placing it under the players Rock,Paper,Scissors image on display during the rounds.
 * All images load properly and are fully visible to the user.
 * Nav bar is always visible and footer is fixed always displayed at the bottom of the screen and fully visible.
@@ -514,52 +540,41 @@ This game is fun, easy to play and can be easily replayed after 5 rounds. Its st
 ## DEPLOYMENT:
 
 
-### GitHub Page
+### Using Code Institute's mock terminal for Heroku
 
-This site was deployed to Github pages using the following steps:
+* * *
 
-1. Go to the Github repository
-2. Clock on the Settings tab
-3. Go to Github Pages Section
-4. From the source dropdown menu select Main branch
-5. Once this has been selected, provide the link to the completed website
+This site was deployed using the following steps:
 
-[Link to deployed site](https://stephaniecrocker91.github.io/rock-paper-scissors/)
+1. Fork or clone repository
+2. Create new Heroku App
+3. Set buildbacks: 1- Python, 2- NodeJS
+4. Link Heroku app to repository
+5. Click "Deploy"
+
+[Link to deployed site](https://battlefields-blast.herokuapp.com/)
 
 * * *
 
 
-### Forking The GitHub Repository
-
-* * *
-You can Fork the Repository. This makes a copy of the original repository on our Github account so you can make changes without affecting the original repository.
-1. Log into GitHub and locate the GitHub repository you want.
-2. Click on the "Fork" button which is located in the top right corner.
-3. You will now have a copy of the original repository in your GitHub account.
-
-* * * 
-
-### Cloning the Project.
-* * *
-1. Log into GitHub and locate the GitHub repository you want.
-2. Under the repository name, click "Code" button which will come up with a dropdown menu.
-3. Where it says Clone, copy the link below.
-
-* * * 
 
 CREDITS: 
 --------
-
 
 * * *
 
 ### Content & Code
 * A couple of the code institute tutors helped me with some issues I was having. 
-    * My gameOver function was getting quite heavy and becoming problematic particularly in displaying block and none. A tutor at code institute recommended I  use the an onload instead. This made things run much smoothly. [Page Onload](https://www.w3schools.com/jsref/event_onload.asp).
-    * When I encountered the end result bug, I had help from Oisin at Code Institute. He suggested I try to solve it by changing the order of my functions  within the playRound(e) function. We would instead place updateRound() at the ends of the function. This fixed the issue.
+    * I encountered a bug: When finishing a game and wanting to launch game again, my X's and -'s remained displayed on the board. Sean from Code Institute helped me solve this, and suggested I use the following code:
+    
+    <img src="assets/images/sean-bug.png" width="200px">
+    <img src="assets/images/sean-bug-2.png" width="200px">
 
-
-<img src="assets/images/result-error-bug-2.png" width="300px"><img src="assets/images/result-error-bug-3.png" width="300px">
+* Coming up with how to create my grid was a challenge! After brainstorming, I researched a few different ways people had achieved this. Some of the tutorials I looked at:
+    * [Code Academy](https://discuss.codecademy.com/t/excellent-battleship-game-written-in-python/430605)
+    * [Python for beginers](https://bigmonty12.github.io/battleship)        * [Stack Exchange](https://codereview.stackexchange.com/questions/122970/python-simple-battleship-game)
+* My peers at Code Institute Slack were also incredibly helpful!
+* My mentor Chris helped me better understand how to best validate my code.
 
 
 * Images & Icons:

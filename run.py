@@ -169,7 +169,7 @@ def launch_game():
     hits = 0
     misiles = 0
     place_random_ships()
-    print(enemy_ship_coordinates)
+   #  print(enemy_ship_coordinates)
     while misiles <= 14:
         if ships_sunk == 5:
             break
