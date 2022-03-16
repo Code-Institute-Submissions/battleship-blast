@@ -448,6 +448,10 @@ For testing I used the following sources:
 #### [Pep8](http://pep8online.com/)
 
 Tested and no errors found.
+
+<img src="assets/images/no-errors.png" width="800px">
+
+
 Warnings:
 * The empty headers are for spaced that will be filled out using Javascript code
 * The section area warning suggesting a h2-h6 element: I don't think the form needs a header as it is pretty self explanatory.

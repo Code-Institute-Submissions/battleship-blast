@@ -49,7 +49,8 @@ def game_menu():
 ********************************** \n', 'green'))
         print(colored("G A M E   M E N U \n", 'green'))
         print(colored("War is imminent....", 'green'))
-        print(colored(f'Captain {player_name}, prepare for battle! \n', 'green'))
+        print(colored(f'Captain {player_name}, prepare\
+for battle! \n', 'green'))
         print(colored("Instructions--> 1", 'green'))
         print(colored("Launch game--> 2", 'green'))
         print(colored("Exit --> 3", 'green'))
@@ -190,18 +191,21 @@ def launch_game():
         misiles_left = 15 - misiles
         print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
         while True:
-            row_choice_letter = input(colored("Enter row: \n", 'green')).upper()
+            row_choice_letter = input(colored("Enter \
+row: \n", 'green')).upper()
             if validate_key_alpha(row_choice_letter, keys_guess_row):
                 break
         while True:
-            column_choice_letter = input(colored("Enter column: \n", 'green')).upper()
+            column_choice_letter = input(colored("Enter \
+column: \n", 'green')).upper()
             if validate_key_alpha(column_choice_letter, keys_guess_col):
                 break
         row_choice = letters_to_numbers[row_choice_letter]
         column_choice = letters_to_numbers[column_choice_letter]
         global player_guess
         player_guess = row_choice, column_choice
-        print(colored(f'You guessed({row_choice_letter}, {column_choice_letter})\n', 'green'))
+        print(colored(f'You guessed({row_choice_letter},\
+{column_choice_letter})\n', 'green'))
         compare_coordinates(board)
         misiles += 1
         print("\n")
