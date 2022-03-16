@@ -486,24 +486,7 @@ What was happening was that the result for Round 4 was being read to come up wit
 
 * I noticed that during the Game rounds, the user was having to scroll down to see their result. For this reason, I decided to remove the header (Rock paper Scissors title) from the display (between rounds 1 and 5). I initially tried to change the font and button sizes, but I thought it all looked a bit too crowded. Due to deadlines, removing the header seemed to be the best way to solve this problem (for now.. I will be working on this in the future)!
 
-
-
-
-
-#### Lighthouse testing 
-
-
 * * * 
-
-When putting the site through lighthouse testing, I received the following report.
-
-##### Mobile Lighthouse testing 
-
-<img src="assets/images/mobile-lighthouse.png" width="300px">
-
-##### Desktop Lighthouse testing 
-
-<img src="assets/images/desktop-lighthouse.png" width="300px">
 
 #### Testing User Stories 
 
@@ -537,7 +520,30 @@ This game is fun, easy to play and can be easily replayed after 5 rounds. Its st
 
 <img src="assets/images/play-again-button.png" width="200px">
 
+* * *
+
 ## DEPLOYMENT:
+
+* * *
+
+### Forking The GitHub Repository
+
+* * *
+
+You can Fork the Repository. This makes a copy of the original repository on our Github account so you can make changes without affecting the original repository.
+1. Log into GitHub and locate the GitHub repository you want.
+2. Click on the "Fork" button which is located in the top right corner.
+3. You will now have a copy of the original repository in your GitHub account.
+
+* * * 
+
+### Cloning the Project.
+* * *
+1. Log into GitHub and locate the GitHub repository you want.
+2. Under the repository name, click "Code" button which will come up with a dropdown menu.
+3. Where it says Clone, copy the link below.
+
+* * * 
 
 
 ### Using Code Institute's mock terminal for Heroku
@@ -546,11 +552,26 @@ This game is fun, easy to play and can be easily replayed after 5 rounds. Its st
 
 This site was deployed using the following steps:
 
-1. Fork or clone repository
-2. Create new Heroku App
-3. Set buildbacks: 1- Python, 2- NodeJS
-4. Link Heroku app to repository
-5. Click "Deploy"
+1. Make sure that the project has been created using Code Institute Python template.
+2. Make sure all python scripts have a need line character at the end of the text inside.
+3. With installing packages type in command: 'pip3 freeze > requirements.txt'. This will allow them to work in Heroku, and the Code Institute template will be updated automatically.
+4. Commit and push changes to GitHub
+5. Create Heroku Account
+6. In Heroku dashboard: go to Create new app.
+7. Give your app a unique name
+8. Select region
+9. Click create App.
+10. Go to Settings tab, scroll down to Config Vars abd select Reveal Config Vars.
+11. Confid Vars enter:
+    1. Key: PORT
+    2. Value: 8000
+12. Go to Buildpacks and click Add Buildpack.
+13. Select Python and save changes.
+14. Add NodeJS and save changes (Python on top and NodeJS below. You can drag the to re-order)
+15. Scroll to Deploy Tab, select Github and confirm Connect to Github.
+16. Search for your repository and click Connect.
+17. Select Deploy Branch and deploy in master/main.
+18. Your deployed app is live!
 
 [Link to deployed site](https://battlefields-blast.herokuapp.com/)
 
