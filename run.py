@@ -20,6 +20,7 @@ letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H
 if len(sys.argv) > 1:
     player_name = sys.argv[1]
 
+
 # GAME INTRO, MENU AND INSTRUCTION FUNCTIONS--------------------------
 def launch_intro():
     """
@@ -33,6 +34,7 @@ def launch_intro():
 
         if validate_player_name(player_name):
             break
+
 
 def game_menu():
     """
@@ -56,6 +58,7 @@ def game_menu():
         grid_choice()
     elif menu_selection == "3":
         exit_game()
+
 
 def game_instructions():
     """
@@ -86,6 +89,7 @@ def game_instructions():
     if menu_selection == "M":
         game_menu()
 
+
 # GAME ROUND FUNCTIONS--------------------------
 def grid_choice():
     """
@@ -104,30 +108,27 @@ def grid_choice():
         if validate_key_numerical(grid_size, keys_grid):
             grid_size = int(grid_size)
             break
-
     global keys_guess_row
     global keys_guess_col
 
     keys_guess_row = []
     for i in range(65, 65 + grid_size):
         keys_guess_row.append(chr(i))
-
-
     keys_guess_col = []
     for i in range(65, 65 + grid_size):
         keys_guess_col.append(chr(i))
-
     global board
     board = []
     for x in range(grid_size):
         board.append([" . "] * grid_size)
     launch_game()
 
+
 def grid(board):
     """
     Function that prints board onto the terminal
     """
-    column_names=""
+    column_names = ""
     for i in range(65, 65 + int(grid_size)):
         column_names += str(chr(i))
     print(colored('    ' + '   '.join(column_names) + '  ', 'green'))
@@ -140,6 +141,7 @@ def grid(board):
         print(colored((chr(row_letter+65)+("| "))+(" ").join(row)+(" |"), 'green'))
         row_letter += 1
     print(colored('  _'+"".join(line), 'green'))
+
 
 def place_random_ships():
     """
@@ -155,6 +157,7 @@ def place_random_ships():
         if coordinate not in enemy_ship_coordinates:
             enemy_ship_coordinates.append(tuple(coordinate))
 
+
 def launch_game():
     """
     Start Game round.
@@ -169,7 +172,6 @@ def launch_game():
     hits = 0
     misiles = 0
     place_random_ships()
-   #  print(enemy_ship_coordinates)
     while misiles <= 14:
         if ships_sunk == 5:
             break
@@ -211,6 +213,7 @@ def launch_game():
             pass
     end_score()
 
+
 def compare_coordinates(board):
     """
     Function that compares player guess and random coord.
@@ -244,6 +247,7 @@ def compare_coordinates(board):
         grid(board)
         print("\n")
         print(colored("You missed! \n", 'green'))
+
 
 def end_score():
     """
@@ -295,6 +299,7 @@ def exit_game():
     elif exit_choice == "N":
         game_menu()
 
+
 def game_over():
     """
     Function that triggers display of GAME OVER page
@@ -303,6 +308,7 @@ def game_over():
     print(colored("G A M E    O V E R", 'green'))
     print("\n")
     print(colored("To play again, click on RUN PROGRAM", 'green'))
+
 
 # VALIDATING FUNCTIONS--------------------------
 def validate_key_alpha(data, valid_keys):
@@ -323,6 +329,7 @@ def validate_key_alpha(data, valid_keys):
         return False
     return True
 
+
 def validate_key_numerical(data, valid_keys):
     """
     Function that validates data.
@@ -341,6 +348,7 @@ def validate_key_numerical(data, valid_keys):
         return False
     return True
 
+
 def validate_player_name(data):
     """
     Function validating player name.
@@ -354,6 +362,7 @@ def validate_player_name(data):
         print(f"Invalid data: {e}")
         return False
     return True
+
 
 if len(sys.argv) == 1:
     launch_intro()
