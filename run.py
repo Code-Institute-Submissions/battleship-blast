@@ -196,6 +196,8 @@ def launch_game():
         compare_coordinates(board)
         misiles += 1
         print("\n")
+        if misiles_left == 1:
+            end_score()
         print(colored("Launch next misile?", 'green'))
         print(colored("Y or N?", 'green'))
         print(colored("If N, all advances will be lost.", 'green'))
