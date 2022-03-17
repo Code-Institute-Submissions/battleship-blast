@@ -503,24 +503,20 @@ Testing this game manualy was a long and very detailed process. No errors were f
         * That the (data.isalpha()) is False
         * That the input is not one of the predetermined keys listed, in this case M only.
  <img src="assets/images/error-2.png" width="500px"> 
+ <img src="assets/images/error-2.png" width="500px">  !!!!!!!!!!!!!!!
  <img src="assets/images/error-2.png" width="500px"> 
 
+* QUIT GAME - no issues, redirects to this section as expected when entering 3 from MENU.
+    * Content is displayed clearly, and leaves for no ambiguity. 
+    * Question player. Quit game? - User input must be validated before proceeding. For this section, I used the same function validate_key_alpha. In this case, we anticipate the same errors:
+        * That the (data.isalpha()) is False
+        * That the input is not one of the predetermined keys listed, in this case yes-no-keys list containing Y and N  only. This is looped until validation. It has been tested and I can confirm it will accept nothing other than this.
+  
 
-
-
- <img src="assets/images/error-2.png" width="500px"> 
-
-* QUIT GAME - when entering 3 from MENU
-    * Header: Q U I T  G A M E 
-    * Message confirming if user wnats to exit game. Language is challenging the user.
-    * Question player. Quit game?
-        * If Y - GAME OVER
-        * If N - back to MENU
-    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
-        * Must be alphabetical
-        * Must be in predetermined list with values: Y, N
-
- <img src="assets/images/error-3.png" width="500px"> 
+ <img src="assets/images/exit-validate-1.png" width="500px"> 
+ <img src="assets/images/exit-validate-2.png" width="500px"> 
+ <img src="assets/images/exit-validate-3.png" width="500px"> 
+ <img src="assets/images/exit-validate-4.png" width="500px"> 
 
 
 * GAME OVER - when entering Y from QUIT GAME

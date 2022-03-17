@@ -50,7 +50,7 @@ def game_menu():
         print(colored("G A M E   M E N U \n", 'green'))
         print(colored("War is imminent....", 'green'))
         print(colored(f'Captain {player_name}, prepare\
-for battle! \n', 'green'))
+ for battle! \n', 'green'))
         print(colored("Instructions--> 1", 'green'))
         print(colored("Launch game--> 2", 'green'))
         print(colored("Exit --> 3", 'green'))
