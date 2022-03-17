@@ -520,7 +520,7 @@ Testing this game manualy was a long and very detailed process. No errors were f
 
 
 * GAME OVER - when entering Y from QUIT GAME
-    * Message displaying G A M E  O V E R
+    * Message displaying G A M E  O V E R - no issues. Works as intended
 
  <img src="assets/images/gameover.png" width="500px"> 
 
