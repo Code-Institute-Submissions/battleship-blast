@@ -465,13 +465,128 @@ Warnings:
 
 * * * 
 
+Testing this game manualy was a long and very detailed process. No errors were found.
 
-* Initial page loads properly.
-* Player name input is loaded properly and the valid input is required to move forward. 
-* handlePlayerName() function works correctly, and takes the player name placing it under the players Rock,Paper,Scissors image on display during the rounds.
-* All images load properly and are fully visible to the user.
-* Nav bar is always visible and footer is fixed always displayed at the bottom of the screen and fully visible.
-* The site has responsive design, allowing the website and its features to be fully displayed (visible) on all display sized: phone, tablets, laptops, larger screens.
+* * *
+
+
+*   INTRODUCTION: The initial page loads correctly, with no problems displaying its content.
+    * Player name input form (required, and validated before submitting):
+        * Input must be validated. To do so, I created a function called input_player_name. This required the user to input an alphabetical string. Input will not be submitted if it is not this type of data. As seen below, it will not validate a digit, empty space or punctuation.
+
+        <img src="assets/images/validate-name.png" width="500px"> 
+        
+        * This name is succesfuly stored as a variable and used a number of times throughout the game. (As seen displayed below)
+
+        <img src="assets/images/validate-name-1.png" width="500px"> 
+
+
+*   MENU: which loads once the user has input player name and it has been validated. 
+    * Content is displayed clearly, and loads properly when inputing the correct Player_name data.
+    * The user must input one of the 3 options. Once again, this requires validating. To do so, I created a separate function called validate_key_numerical. In this function, we anticipate the following errors
+        * Input is NOT a digit
+        * Input is not one of the pre-requisited valid keys listed under keys_123.
+    * Play input request: loops user input request until validated. I created a validating function to anticipate any errors the user may input:
+    * When testing, I can confirm that it works and the code will not accept anything other than digits 1, 2 and 3.
+
+    <img src="assets/images/validate-menu-1.png" width="500px"> 
+    <img src="assets/images/validate-menu-2.png" width="500px"> 
+    <img src="assets/images/validate-menu-3.png" width="500px"> 
+    <img src="assets/images/validate-menu-4.png" width="500px"> 
+
+*   INSTRUCTIONS - can confirm that when inputing 1, user is directed to the correct section: Instructions.
+
+    <img src="assets/images/instructions-validate-1.png" width="500px"> 
+
+    * The content is displayed clearly in the terminal. You can see all information without having to scroll up or down.
+    * Player input request must be valid: To achieve this, I created one more function called validate_key_alpha that loops the request until it is valid. This function anticipated the following errors:
+        * That the (data.isalpha()) is False
+        * That the input is not one of the predetermined keys listed, in this case M only.
+ <img src="assets/images/error-2.png" width="500px"> 
+ <img src="assets/images/error-2.png" width="500px"> 
+
+
+
+
+ <img src="assets/images/error-2.png" width="500px"> 
+
+* QUIT GAME - when entering 3 from MENU
+    * Header: Q U I T  G A M E 
+    * Message confirming if user wnats to exit game. Language is challenging the user.
+    * Question player. Quit game?
+        * If Y - GAME OVER
+        * If N - back to MENU
+    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
+        * Must be alphabetical
+        * Must be in predetermined list with values: Y, N
+
+ <img src="assets/images/error-3.png" width="500px"> 
+
+
+* GAME OVER - when entering Y from QUIT GAME
+    * Message displaying G A M E  O V E R
+
+ <img src="assets/images/gameover.png" width="500px"> 
+
+
+* GRID SELECTION - when entering 2 from MENU
+    * Message displaying G R I D  S I Z E
+    * Options to select from:
+        * 5 x 5 (easy)
+        * 8 x 8 (medium)
+        * 12 x 12 (hard)
+    * Input request (validated before submitting). This looped request until validation anticipates the following possible errors:
+        * Must be in a predetermined list with vaues: 5, 8, 12
+        * Must be a digit
+
+<img src="assets/images/error-4.png" width="500px"> 
+
+
+* LAUNCH GAME ROUND - after selecting grid size
+    * Header: B A T T L E F I E L D
+    * Battlefield Grid:
+        * Rows: A B C D E ...
+        * Columns: A B C D E ...
+    * Input request: Enter row (validated before submitting)
+    * Input request: Enter column (validated before submitting)
+    Both cases, request is looped until validation anticipates the following possible errors:
+        * Must be alphabetical
+        * Must be in predetermined list with values determined by for loop with range(grid_size) which creates an alphabetical list to cover this range.
+
+<img src="assets/images/error-5.png" width="500px"> 
+
+* AFTER SUBMITTING COORDINATES - results added!
+    * Message confirming hit, miss, or repeated coordinate.
+    * Options, launch next misile?
+        * Y - yes (validated before submitting)
+        * N - no (validated before submitting)
+    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
+        * Must be alphabetical
+        * Must be in predetermined list with values: Y, N
+
+
+<img src="assets/images/error-6.png" width="500px"> 
+
+
+* 2nd ROUND ONWARDS...
+    * Exactly the same as before but adding:
+        * Misils left! with each round that loops, the function addss 1 missil, and subtracts that value from the total misiles at the start.
+        * X (sunk) or - (missed) on grid where player has previously hit.
+
+<img src="assets/images/round-3.png" width="500px"> 
+    
+
+* END SCORE (Either after completing 15 rounds, or having sunk all ships)
+    * Header: G A M E  O V E R 
+    * Personalised message: You win or You lose!
+    * Number of ships sank
+    * Number of ships remaining
+    * Options, play again?
+        * Y - yes (validated before submitting)
+        * N - no (validated before submitting)
+
+<img src="assets/images/final-score.png" width="500px"> 
+
 
 
 * * * 

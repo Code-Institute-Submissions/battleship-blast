@@ -77,14 +77,14 @@ def game_instructions():
         print(colored("   Easy - 5 x 5", 'green'))
         print(colored("   Hard - 8 x 8", 'green'))
         print(colored("   Brutal - 12 x 12", 'green'))
-        print(colored("• There here are 5 hidden battleships.\n", 'green'))
+        print(colored("• There here are 5 hidden battleships.", 'green'))
         print(colored("• Rows : A, B, C, D, E, ...", 'green'))
         print(colored("• Columns: A, B, C, D, E, ...", 'green'))
         print(colored("• Each ship takes up one coordinate", 'green'))
         print(colored("• For example: (A, C)\n", 'green'))
-        print(colored("• Enter coordinates to launch missil. \n", 'green'))
+        print(colored("• Enter coordinates to launch missil. ", 'green'))
         print(colored("• You have a total of 15 missils.", 'green'))
-        print(colored("• Sink ALL ships to win the game. \n", 'green'))
+        print(colored("• Sink ALL ships to win the game. ", 'green'))
         print(colored("• Top left: (A, A)", 'green'))
         print(colored("• Bottom right: (E, E), (H, H) or (L, L)\n", 'green'))
         print(colored("Go back to menu--> M", 'green'))
@@ -352,7 +352,7 @@ def validate_key_numerical(data, valid_keys):
     try:
         if data.isdigit() is not True:
             raise ValueError(
-                f'You entered {data} which is not an integer.'
+                f'You entered {data} which is not an digit.'
             )
         elif data not in valid_keys:
             raise ValueError(
