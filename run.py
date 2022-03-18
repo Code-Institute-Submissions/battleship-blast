@@ -216,7 +216,6 @@ column: \n", 'green')).upper()
             print(colored("Launch next missile?", 'green'))
             print(colored("Y or N?", 'green'))
             print(colored("If N, all advances will be lost.", 'green'))
-            
             exit_option = input('\n').upper()
             if validate_key_alpha(exit_option, yes_no_keys):
                 break
