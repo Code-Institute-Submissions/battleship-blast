@@ -569,8 +569,9 @@ With manual testing, I an confirm this works as intended, and no errors occured.
         * Must be alphabetical
         * Must be in predetermined list with values determined by for loop with range(grid_size) which creates an alphabetical list to cover this range.
     
-    I can confirm that no errors come up.
+    I can confirm that no errors come up. !!!
     <img src="assets/images/error-5.png" width="500px"> 
+    <img src="assets/images/row-col-error.png" width="500px"> 
 
     
 
@@ -584,27 +585,22 @@ As you can see, (0,0)=(A,A) and (1,1)=(B,B) are ship locations. As they were ent
 <img src="assets/images/xand-.png" width="500px"> 
 
 
-
-
-
-    * Options, launch next misile?
+* Options, launch next misile?
+    * Content is displayed clearly, and leaves for no ambiguity. 
+    * Question player. Launch next? - User input must be validated before proceeding. For this section, I used the same function validate_key_alpha. In this case, we anticipate the same errors:
+        * That the (data.isalpha()) is False
+        * That the input is not one of the predetermined keys listed, in this case the same yes-no-keys list containing Y and N  only. This is looped until validation. It has been tested and I can confirm it will accept nothing other than this.
         * Y - yes (validated before submitting)
         * N - no (validated before submitting)
-    * Player input request. (Validated before redirecting). This looped request until validation anticipates the following possible errors:
-        * Must be alphabetical
-        * Must be in predetermined list with values: Y, N
 
+Manual testing confirms this works, resulting in no errors.
+When entering Y - next missil will be launched. Requests new row coordinate.
+When entering N - quit game ?
 
-<img src="assets/images/error-6.png" width="500px"> 
+<img src="assets/images/error-y-n.png" width="500px"> 
 
-
-* 2nd ROUND ONWARDS...
-    * Exactly the same as before but adding:
-        * Misils left! with each round that loops, the function addss 1 missil, and subtracts that value from the total misiles at the start.
-        * X (sunk) or - (missed) on grid where player has previously hit.
-
-<img src="assets/images/round-3.png" width="500px"> 
     
+message you hit, you miss, you already hit 
 
 * END SCORE (Either after completing 15 rounds, or having sunk all ships)
     * Header: G A M E  O V E R 
@@ -630,9 +626,9 @@ As you can see, (0,0)=(A,A) and (1,1)=(B,B) are ship locations. As they were ent
 <img src="assets/images/loop-bug-fix.png" width="500px"> 
 
 
-end of launch next misile
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!end of launch next misile
 
-spacing
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!spacing
 
 * While manually testing the random coordinates generated to create the ships, I noticed an error in my code. Because I had initially only created a 5 x 5 grid and I wanted to create 5 random ships, I had used the following using the int(grid_size). 
 
@@ -769,8 +765,8 @@ CREDITS:
 * A couple of the code institute tutors helped me with some issues I was having. 
     * I encountered a bug: When finishing a game and wanting to launch game again, my X's and -'s remained displayed on the board. Sean from Code Institute helped me solve this, and suggested I use the following code:
     
-    <img src="assets/images/sean-bug.png" width="200px">
-    <img src="assets/images/sean-bug-2.png" width="200px">
+    <img src="assets/images/sean-bug.png" width="500px">
+    <img src="assets/images/sean-bug-2.png" width="500px">
 
 * Coming up with how to create my grid was a challenge! After brainstorming, I researched a few different ways people had achieved this. Some of the tutorials I looked at:
     * [Code Academy](https://discuss.codecademy.com/t/excellent-battleship-game-written-in-python/430605)
@@ -779,10 +775,6 @@ CREDITS:
 * My mentor Chris helped me better understand how to best validate my code.
 
 
-* Images & Icons:
-    * [Font Awesome](https://fontawesome.com/) for [GitHub Icon](https://fontawesome.com/v5.15/icons/github?style=brands)
-    * [Vector Stock](https://www.vectorstock.com/royalty-free-vector/rock-paper-scissors-hand-gesture-vector-25169733) for Rock, Paper, Scissors hand images.
-    * [Favicon](https://favicon.io/emoji-favicons/oncoming-fist)
        
 
 

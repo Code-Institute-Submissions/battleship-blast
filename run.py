@@ -212,10 +212,11 @@ column: \n", 'green')).upper()
         print("\n")
         if misiles_left == 1:
             end_score()
-        print(colored("Launch next misile?", 'green'))
-        print(colored("Y or N?", 'green'))
-        print(colored("If N, all advances will be lost.", 'green'))
         while True:
+            print(colored("Launch next misile?", 'green'))
+            print(colored("Y or N?", 'green'))
+            print(colored("If N, all advances will be lost.", 'green'))
+            
             exit_option = input('\n').upper()
             if validate_key_alpha(exit_option, yes_no_keys):
                 break
