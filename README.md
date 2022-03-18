@@ -642,10 +642,6 @@ OPTIONS, play again?
 <img src="assets/images/loop-bug-fix.png" width="500px"> 
 
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!end of launch next missile
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!spacing
-
 * While manually testing the random coordinates generated to create the ships, I noticed an error in my code. Because I had initially only created a 5 x 5 grid and I wanted to create 5 random ships, I had used the following using the int(grid_size). 
 
 <img src="assets/images/ships-bug.png" width="500px"> 
@@ -779,7 +775,6 @@ This site was deployed using the following steps:
 [Link to deployed site](https://battlefields-blast.herokuapp.com/)
 
 * * *
-
 
 
 CREDITS: 

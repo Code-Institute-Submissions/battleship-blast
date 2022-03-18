@@ -82,7 +82,7 @@ def game_instructions():
         print(colored("• Columns: A, B, C, D, E, ...", 'green'))
         print(colored("• Each ship takes up one coordinate", 'green'))
         print(colored("• For example: (A, C)", 'green'))
-        print(colored("• Enter coordinates to launch missil. ", 'green'))
+        print(colored("• Enter coordinates to launch missile. ", 'green'))
         print(colored("• You have a total of 15 missiles.", 'green'))
         print(colored("• Sink ALL ships to win the game. ", 'green'))
         print(colored("• Top left: (A, A)", 'green'))
