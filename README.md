@@ -569,7 +569,7 @@ With manual testing, I an confirm this works as intended, and no errors occured.
         * Must be alphabetical
         * Must be in predetermined list with values determined by for loop with range(grid_size) which creates an alphabetical list to cover this range.
     
-    I can confirm that no errors come up. !!!
+    I can confirm that no errors come up. 
     <img src="assets/images/error-5.png" width="500px"> 
     <img src="assets/images/row-col-error.png" width="500px"> 
 
@@ -600,7 +600,16 @@ When entering N - quit game ?
 <img src="assets/images/error-y-n.png" width="500px"> 
 
     
-message you hit, you miss, you already hit 
+* During testing, I can confirm that the correct message is displayed when :
+    * matching coordinate - You sunk a ship!
+    * Not matching - You missed!
+    * Hitting a coordinate you have hit previously
+
+<img src="assets/images/hit.png" width="500px"> 
+<img src="assets/images/miss.png" width="500px"> 
+<img src="assets/images/double.png" width="500px"> 
+   
+
 
 * END SCORE (Either after completing 15 rounds, or having sunk all ships)
     * Header: G A M E  O V E R 

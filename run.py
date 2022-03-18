@@ -189,6 +189,7 @@ def launch_game():
         grid(board)
         print("\n")
         misiles_left = 15 - misiles
+        print(enemy_ship_coordinates)
         print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
         while True:
 
