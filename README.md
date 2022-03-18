@@ -608,14 +608,16 @@ When entering N - quit game ?
 <img src="assets/images/hit.png" width="500px"> 
 <img src="assets/images/miss.png" width="500px"> 
 <img src="assets/images/double.png" width="500px"> 
-   
-
 
 * END SCORE (Either after completing 15 rounds, or having sunk all ships)
-    * Header: G A M E  O V E R 
-    * Personalised message: You win or You lose!
-    * Number of ships sank
-    * Number of ships remaining
+    * Personalised message: You win or You lose! After having tested with many scenarios, I can confirm it displays the correct score.
+        * Number of ships sank
+        * Number of ships remaining
+    * The function will break once all 5 ships have been sunk regardless of how many misiles are left! 
+
+    <img src="assets/images/all-hits.png" width="500px"> 
+
+
     * Options, play again?
         * Y - yes (validated before submitting)
         * N - no (validated before submitting)
@@ -656,6 +658,16 @@ I can confirm it now generates only 5 random coordinates for the ships.
     <img src="assets/images/sean-bug-2.png" width="200px">
 
 I can confirm after being manually tested, that the grid will refresh and an entire new set of ship-coordinates is generated after starting a new game.
+
+* * * 
+
+#### Unresolved bug 
+
+* * * 
+I would like to resolve the following issue. When sinking all 5 ships, the program still asks the user if they would like to launch a new misile. I would like to change this so that it goes straight to the SCORE section displayed VICTORY!
+
+<img src="assets/images/victory-bug.png" width="200px">
+
 
 * * * 
 
