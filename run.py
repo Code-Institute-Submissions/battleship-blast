@@ -83,7 +83,7 @@ def game_instructions():
         print(colored("• Each ship takes up one coordinate", 'green'))
         print(colored("• For example: (A, C)", 'green'))
         print(colored("• Enter coordinates to launch missil. ", 'green'))
-        print(colored("• You have a total of 15 missils.", 'green'))
+        print(colored("• You have a total of 15 missiles.", 'green'))
         print(colored("• Sink ALL ships to win the game. ", 'green'))
         print(colored("• Top left: (A, A)", 'green'))
         print(colored("• Bottom right: (E, E), (H, H) or (L, L)\n", 'green'))
@@ -189,7 +189,7 @@ def launch_game():
         grid(board)
         print("\n")
         misiles_left = 15 - misiles
-        print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
+        print(colored(f'You have {misiles_left} missiles left!\n', 'green'))
         while True:
 
             row_choice_letter = input(colored("Enter \
@@ -213,7 +213,7 @@ column: \n", 'green')).upper()
         if misiles_left == 1:
             end_score()
         while True:
-            print(colored("Launch next misile?", 'green'))
+            print(colored("Launch next missile?", 'green'))
             print(colored("Y or N?", 'green'))
             print(colored("If N, all advances will be lost.", 'green'))
             
