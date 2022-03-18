@@ -535,16 +535,25 @@ Testing this game manualy was a long and very detailed process. No errors were f
     * Input request (validated before submitting). This looped request until validation anticipates the following possible errors:
         * Must be in a predetermined list with vaues: 5, 8, 12
         * Must be a digit
-    With manual testing, I an confirm this works as intended, and no errors occured.
 
-<img src="assets/images/error-4.png" width="500px"> 
+With manual testing, I an confirm this works as intended, and no errors occured.
+
+<img src="assets/images/grid-val.png" width="500px"> 
+<img src="assets/images/grid-val-2.png" width="500px"> 
+<img src="assets/images/grid-val-3.png" width="500px"> 
 
 
-* LAUNCH GAME ROUND - after selecting grid size
-    * Header: B A T T L E F I E L D
-    * Battlefield Grid:
-        * Rows: A B C D E ...
-        * Columns: A B C D E ...
+* LAUNCH GAME ROUND - after selecting grid size and the input being correctly validated.
+    * The information is all displayed correctly. When clicking on the grid size, the correct grid board is displayed. See below:
+
+    <img src="assets/images/five-grid.png" width="500px"> 
+    <img src="assets/images/eight-grid.png" width="500px"> 
+    <img src="assets/images/twelve-grid.png" width="500px"> 
+
+    * When creating the board, the function to create the 5 random ship coordinates is triggered. By manually printing the ship-coordinate list we can confirm this works correctly.
+    <img src="assets/images/random-ships.png" width="500px"> 
+
+
     * Input request: Enter row (validated before submitting)
     * Input request: Enter column (validated before submitting)
     Both cases, request is looped until validation anticipates the following possible errors:
@@ -602,21 +611,23 @@ end of launch next misile
 
 spacing
 
+* While manually testing the random coordinates generated to create the ships, I noticed an error in my code. Because I had initially only created a 5 x 5 grid and I wanted to create 5 random ships, I had used the following using the int(grid_size). 
 
+<img src="assets/images/ships-bug.png" width="500px"> 
+<img src="assets/images/random-ships-2.png" width="500px"> 
+<img src="assets/images/random-ships-3.png" width="500px"> 
 
-* The gameOver function was getting quite heavy and becoming problematic particularly in displaying block and none. A tutor at code institute recommended I  use the an onload instead. This made things run much smoothly.
+This was ammended to while len(enemy_ship_coordinates) < 5:
+I can confirm it now generates only 5 random coordinates for the ships.
 
-<img src="assets/images/launchgame-bug.png" width="600px">
+<img src="assets/images/ships-bug-fix.png" width="500px"> 
 
-* While validating my JS for bugs, I encountered a BIG problem regarding my end result. I thought I had tested it enough, but noticed that once in a while the final result displayed would be incorrect! See below:
+* A significant bug i encountered was when finishing a game and wanting to launch game again. The X's and -'s remained displayed on the board. Sean from Code Institute helped me solve this, and suggested I use the following code:
+    
+    <img src="assets/images/sean-bug.png" width="200px">
+    <img src="assets/images/sean-bug-2.png" width="200px">
 
-<img src="assets/images/result-error-bug.png" width="600px">
-
-What was happening was that the result for Round 4 was being read to come up with the final answer. Upon getting assistance from the Code Institute mentors, we discovered that there the easiest option would be to switch the order of the functions run within the playRound(e) function. We would instead place updateRound() at the ends of the function. This fixed the issue.
-
-<img src="assets/images/result-error-bug-2.png" width="300px"><img src="assets/images/result-error-bug-3.png" width="300px">
-
-* I noticed that during the Game rounds, the user was having to scroll down to see their result. For this reason, I decided to remove the header (Rock paper Scissors title) from the display (between rounds 1 and 5). I initially tried to change the font and button sizes, but I thought it all looked a bit too crowded. Due to deadlines, removing the header seemed to be the best way to solve this problem (for now.. I will be working on this in the future)!
+I can confirm after being manually tested, that the grid will refresh and an entire new set of ship-coordinates is generated after starting a new game.
 
 * * * 
 

@@ -157,7 +157,7 @@ def place_random_ships():
     """
     global enemy_ship_coordinates
     enemy_ship_coordinates = []
-    while len(enemy_ship_coordinates) < int(grid_size):
+    while len(enemy_ship_coordinates) < 5:
         ship_row = random.randint(0, int(grid_size)-1)
         ship_column = random.randint(0, int(grid_size)-1)
         coordinate = ship_row, ship_column
@@ -188,6 +188,7 @@ def launch_game():
         print("\n")
         grid(board)
         print("\n")
+        print(enemy_ship_coordinates)
         misiles_left = 15 - misiles
         print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
         while True:
