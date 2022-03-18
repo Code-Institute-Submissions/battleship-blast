@@ -592,7 +592,11 @@ Testing this game manualy was a long and very detailed process. No errors were f
 
 ###### BUGS & FIXES: 
 
-loop for grid selection, to re print info.
+* Loop for grid size selection. When testing this part, I noticed that when a ValueError occured with user input, the loop would only re-loop the input section. It did not include the options that could be selected. This would mean that if still commiting errors, the user would have to scroll up to gain clarification on grid size options. This was solved by changed the while True loop. I included the text into this loop. See below:
+
+<img src="assets/images/loop-bug.png" width="500px"> 
+<img src="assets/images/loop-bug-fix.png" width="500px"> 
+
 
 end of launch next misile
 

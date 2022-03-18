@@ -102,7 +102,7 @@ def grid_choice():
     """
     while True:
         print(colored('*********************************\
-    ************************************* \n', 'green'))
+************************************* \n', 'green'))
         print(colored("G R I D  S E L E C T I O N", 'green'))
         print("\n")
         print(colored("Please select grid size:", 'green'))
