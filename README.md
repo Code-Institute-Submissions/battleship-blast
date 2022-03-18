@@ -478,7 +478,7 @@ Testing this game manualy was a long and very detailed process. No errors were f
         
         * This name is succesfuly stored as a variable and used a number of times throughout the game. (As seen displayed below)
 
-        <img src="assets/images/validate-name-1.png" width="500px"> 
+        <img src="assets/images/validate-name-2.png" width="500px"> 
 
 
 *   MENU: which loads once the user has input player name and it has been validated. 
@@ -502,9 +502,10 @@ Testing this game manualy was a long and very detailed process. No errors were f
     * Player input request must be valid: To achieve this, I created one more function called validate_key_alpha that loops the request until it is valid. This function anticipated the following errors:
         * That the (data.isalpha()) is False
         * That the input is not one of the predetermined keys listed, in this case M only.
- <img src="assets/images/error-2.png" width="500px"> 
- <img src="assets/images/error-2.png" width="500px">  !!!!!!!!!!!!!!!
- <img src="assets/images/error-2.png" width="500px"> 
+ <img src="assets/images/menu-val.png" width="500px"> 
+ <img src="assets/images/menu-val-2.png" width="500px">  
+ <img src="assets/images/menu-val-3.png" width="500px"> 
+<img src="assets/images/menu-val-4.png" width="500px"> 
 
 * QUIT GAME - no issues, redirects to this section as expected when entering 3 from MENU.
     * Content is displayed clearly, and leaves for no ambiguity. 
@@ -525,8 +526,8 @@ Testing this game manualy was a long and very detailed process. No errors were f
  <img src="assets/images/gameover.png" width="500px"> 
 
 
-* GRID SELECTION - when entering 2 from MENU
-    * Message displaying G R I D  S I Z E
+* GRID SELECTION - when entering 2 from MENU the user is directed to the grid selection as intended. 
+    * The information is displayed clearly. The user can choose between 3 grid sizes. Input must be validated.
     * Options to select from:
         * 5 x 5 (easy)
         * 8 x 8 (medium)
@@ -534,6 +535,7 @@ Testing this game manualy was a long and very detailed process. No errors were f
     * Input request (validated before submitting). This looped request until validation anticipates the following possible errors:
         * Must be in a predetermined list with vaues: 5, 8, 12
         * Must be a digit
+    With manual testing, I an confirm this works as intended, and no errors occured.
 
 <img src="assets/images/error-4.png" width="500px"> 
 
@@ -589,6 +591,15 @@ Testing this game manualy was a long and very detailed process. No errors were f
 
 
 ###### BUGS & FIXES: 
+
+loop for grid selection, to re print info.
+
+end of launch next misile
+
+spacing
+
+
+
 * The gameOver function was getting quite heavy and becoming problematic particularly in displaying block and none. A tutor at code institute recommended I  use the an onload instead. This made things run much smoothly.
 
 <img src="assets/images/launchgame-bug.png" width="600px">

@@ -100,15 +100,15 @@ def grid_choice():
     """
     Function to select grid size.
     """
-    print(colored('*********************************\
-************************************* \n', 'green'))
-    print(colored("G R I D  S E L E C T I O N", 'green'))
-    print("\n")
-    print(colored("Please select grid size:", 'green'))
-    print(colored("5 x 5 --> 5", 'green'))
-    print(colored("8 x 8 --> 8", 'green'))
-    print(colored("12 x 12 --> 12", 'green'))
     while True:
+        print(colored('*********************************\
+    ************************************* \n', 'green'))
+        print(colored("G R I D  S E L E C T I O N", 'green'))
+        print("\n")
+        print(colored("Please select grid size:", 'green'))
+        print(colored("5 x 5 --> 5", 'green'))
+        print(colored("8 x 8 --> 8", 'green'))
+        print(colored("12 x 12 --> 12", 'green'))
         global grid_size
         grid_size = input('\n')
         if validate_key_numerical(grid_size, keys_grid):
