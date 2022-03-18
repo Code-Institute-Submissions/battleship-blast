@@ -188,10 +188,10 @@ def launch_game():
         print("\n")
         grid(board)
         print("\n")
-        print(enemy_ship_coordinates)
         misiles_left = 15 - misiles
         print(colored(f'You have {misiles_left} misiles left!\n', 'green'))
         while True:
+
             row_choice_letter = input(colored("Enter \
 row: \n", 'green')).upper()
             if validate_key_alpha(row_choice_letter, keys_guess_row):

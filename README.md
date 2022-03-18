@@ -551,19 +551,42 @@ With manual testing, I an confirm this works as intended, and no errors occured.
     <img src="assets/images/twelve-grid.png" width="500px"> 
 
     * When creating the board, the function to create the 5 random ship coordinates is triggered. By manually printing the ship-coordinate list we can confirm this works correctly.
+
     <img src="assets/images/random-ships.png" width="500px"> 
 
+    * The coordinates generated must also work within the grid range. Through manual testing, I can confirm that depending on the grid size, all coordinates generated are within parameters.
+    For the 5 x 5 = cooridnates between 0 and 4 generated.
+    For 8 x 8 = coordinates between 0 and 7 generated
+    For 12 x 12 = coordinates between 0 and 11 generated
+
+    <img src="assets/images/coord1.png" width="500px"> 
+    <img src="assets/images/coord2.png" width="500px"> 
+    <img src="assets/images/coord3.png" width="500px"> 
 
     * Input request: Enter row (validated before submitting)
     * Input request: Enter column (validated before submitting)
     Both cases, request is looped until validation anticipates the following possible errors:
         * Must be alphabetical
         * Must be in predetermined list with values determined by for loop with range(grid_size) which creates an alphabetical list to cover this range.
+    
+    I can confirm that no errors come up.
+    <img src="assets/images/error-5.png" width="500px"> 
 
-<img src="assets/images/error-5.png" width="500px"> 
+    
 
-* AFTER SUBMITTING COORDINATES - results added!
-    * Message confirming hit, miss, or repeated coordinate.
+* AFTER SUBMITTING COORDINATES - results added! Message confirming hit, miss, or repeated coordinate. With some manual testing carried out by temporarily printing the ship coordinates, I can confirm that when the use inputs the ship cooridates, an X is displayed on grid. If it is not part of the list, a - is displayed. 
+For reference - A = 0, B = 1, C = 2, D = 3, E = 4
+
+As you can see, (0,0)=(A,A) and (1,1)=(B,B) are ship locations. As they were entered by the user, we display an X in this position.
+
+(3,3)=(C,C) is not, therefor it is represented on the grid with a -.
+
+<img src="assets/images/xand-.png" width="500px"> 
+
+
+
+
+
     * Options, launch next misile?
         * Y - yes (validated before submitting)
         * N - no (validated before submitting)
